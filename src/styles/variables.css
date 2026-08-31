@@ -1,0 +1,95 @@
+/* ==========================================================================
+   Design tokens — extracted from the live Avantage theme (v2.6.1)
+   Sources: themes/avantage/style.css, bold-page-builder/content_elements.css
+   ========================================================================== */
+
+:root {
+  /* --- Brand colors ------------------------------------------------------ */
+  --c-accent:            #e94d65;  /* main / primary  (223 uses in theme.css) */
+  --c-accent-dark:       #d01a36;
+  --c-accent-alt:        #e21c2d;
+  --c-secondary:         #1b4962;  /* headline navy — default headline color */
+  --c-dark:              #181818;  /* base font color */
+  --c-dark-alt:          #191919;  /* dark scheme background */
+
+  /* --- Neutrals ---------------------------------------------------------- */
+  --c-white:             #ffffff;
+  --c-body:              rgba(24, 24, 24, 0.8);
+  --c-muted:             rgba(24, 24, 24, 0.5);
+  --c-border:            rgba(24, 24, 24, 0.15);
+  --c-border-soft:       rgba(24, 24, 24, 0.1);
+  --c-bg:                #ffffff;
+  --c-bg-sub:            rgba(24, 24, 24, 0.05);
+
+  /* On dark color scheme (bt_bb_color_scheme_1) */
+  --c-on-dark:           rgba(255, 255, 255, 0.8);
+  --c-on-dark-strong:    #ffffff;
+  --c-on-dark-border:    rgba(255, 255, 255, 0.15);
+  --c-on-dark-sub:       rgba(255, 255, 255, 0.05);
+
+  /* --- Social brand colors (footer / topbar icons) ----------------------- */
+  --c-facebook:  #3b5998;
+  --c-twitter:   #1da1f2;
+  --c-linkedin:  #007bb5;
+  --c-pinterest: #bd081b;
+
+  /* --- Typography -------------------------------------------------------- */
+  --font-base:      "Sarabun", Arial, Helvetica, sans-serif;        /* body + buttons */
+  --font-heading:   "Roboto Condensed", Arial, Helvetica, sans-serif; /* headline titles */
+  --font-alt:       "Roboto", Arial, Helvetica, sans-serif;         /* super/sub headlines */
+
+  --fs-root:  16px;   /* html { font-size: 16px } — all em values cascade from here */
+  --fs-h1:    3em;
+  --fs-h2:    2.5em;
+  --fs-h3:    2.10225em;
+  --fs-h4:    1.76775em;
+  --fs-h5:    1.4865em;
+  --fs-h6:    1.25em;
+
+  --fw-light:   300;
+  --fw-normal:  400;
+  --fw-medium:  500;
+  --fw-bold:    700;
+  --fw-black:   900;
+
+  --lh-base:     1.7;
+  --lh-heading:  1.2;
+
+  /* --- Layout ------------------------------------------------------------ */
+  --w-boxed-1200: 1200px;   /* bt_bb_layout_boxed_1200 */
+  --w-boxed-1400: 1400px;   /* bt_bb_layout_boxed_1400 */
+  --w-content:    1260px;   /* .btContent max-width */
+  --page-gutter:  30px;     /* boxed cells are calc(100% - 60px) */
+  --grid-gutter:  30px;
+
+  /* --- Section spacing scale (bt_bb_*_spacing_*) ------------------------- */
+  --space-normal: 2em;      /* 32px  */
+  --space-medium: 5em;      /* 80px  */
+  --space-large:  8.75em;   /* 140px */
+  /* Mobile overrides (<=768px) */
+  --space-medium-sm: 3em;      /* 48px */
+  --space-large-sm:  4.375em;  /* 70px */
+
+  /* --- Chrome ------------------------------------------------------------ */
+  --header-height: 100px;
+  --radius-soft:   4px;
+  --radius-page:   15px;
+  --shadow-header: 0 2px 30px 0 rgba(0, 0, 0, 0.15);
+  --shadow-page:   0 0 20px 0 rgba(0, 0, 0, 0.15);
+  --shadow-card:   0 8px 30px 0 rgba(0, 0, 0, 0.1);
+
+  --ease:       cubic-bezier(0.23, 1, 0.32, 1);
+  --t-fast:     200ms ease;
+  --t-base:     300ms ease;
+}
+
+/* ==========================================================================
+   Breakpoints (documentation — CSS custom props can't be used in @media)
+   Bold Builder grid tiers used by the page:
+     xs  <= 480px
+     ms  <= 620px
+     sm  <= 768px
+     md   993px – 1200px
+     lg  >= 1201px
+   Theme breakpoints: 480 / 580 / 620 / 640 / 768 / 992 / 1024 / 1200
+   ========================================================================== */

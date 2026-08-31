@@ -1,0 +1,316 @@
+/* ==========================================================================
+   Footer — `btSiteFooter`, theme dark skin (`btDarkSkin`)
+     · `.btSiteFooterWidgets { background:#191919; padding-top:4em }`
+       three `.btBox` columns — `flex: 0 0 33.33%`, `margin-bottom: 6em`,
+       `padding: 0 20px`
+     · `.btDarkSkin .btSiteFooterCopyMenu { background:#e94d65; color:#fff }`
+       `.gutter .port { max-width:1260px }`, copy/menu `padding: 1.7857em 0`
+     · footer base `font-size: .875em`; menu-link `:before` dash (#181818 in
+       dark skin) `scaleX(0) → 1` on hover
+   ========================================================================== */
+
+.siteFooter {
+  font-size: 0.875rem;
+  line-height: 1.7;
+  background-color: #191919;
+}
+
+/* --- Widgets band --------------------------------------------------- */
+
+.siteFooterWidgets {
+  position: relative;
+  background-color: #191919;
+  color: rgba(255, 255, 255, 0.7);
+  padding-top: 4em;
+  overflow: hidden;
+}
+
+/* Faint triangle decoration — the site's geometric motif */
+.siteFooterWidgets__decor {
+  position: absolute;
+  z-index: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  pointer-events: none;
+}
+
+.siteFooterWidgets__decor {
+  right: -80px;
+  top: 30px;
+  border-width: 0 0 320px 320px;
+  border-color: transparent transparent transparent rgba(255, 255, 255, 0.025);
+}
+
+.siteFooterWidgets__decor--2 {
+  left: -60px;
+  bottom: 40px;
+  right: auto;
+  top: auto;
+  border-width: 220px 220px 0 0;
+  border-color: rgba(255, 255, 255, 0.02) transparent transparent transparent;
+}
+
+.siteFooterWidgets__port {
+  position: relative;
+  z-index: 1;
+  max-width: var(--w-content);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+.siteFooterWidgets__row {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -20px;
+}
+
+.ftBox {
+  flex: 0 0 33.333%;
+  max-width: 33.333%;
+  padding: 0 20px;
+  margin-bottom: 6em;
+}
+
+/* --- Widget headline ---------------------------------------------- */
+
+.ftWidget__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: 0.7em;
+}
+
+.ftWidget__title {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: var(--fw-light);
+  line-height: 1.2;
+  color: var(--c-white);
+  margin-bottom: 0.85em;
+}
+
+.ftWidget__text {
+  margin: 0 0 1.6em;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+/* --- Headquarters — contact icon-links -------------------------- */
+
+.ftContact {
+  list-style: none;
+}
+
+.ftContact li {
+  margin-bottom: 0.7em;
+}
+
+.ftContact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75em;
+  color: rgba(255, 255, 255, 0.85);
+  transition: color var(--t-base);
+}
+
+.ftContact a:hover {
+  color: var(--c-accent);
+}
+
+.ftContact__icon {
+  display: inline-flex;
+  flex: none;
+  color: var(--c-accent);
+}
+
+.ftContact__icon .btIcon {
+  width: 16px;
+  height: 16px;
+}
+
+/* --- Our Locations --------------------------------------------- */
+
+.ftMap {
+  display: block;
+  width: 100%;
+  max-width: 280px;
+  height: auto;
+  margin: 0.4em 0 1.5em;
+}
+
+.ftOffices {
+  list-style: none;
+}
+
+.ftOffice {
+  display: flex;
+  justify-content: space-between;
+  gap: 1em;
+  padding: 0.6em 0;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.ftOffice:last-child {
+  border-bottom: 0;
+}
+
+.ftOffice__city {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-white);
+}
+
+.ftOffice__phone {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* --- Avantage Social links ------------------------------------ */
+
+.ftSocial {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+}
+
+.ftSocial__link {
+  width: 2.7em;
+  height: 2.7em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: rgba(255, 255, 255, 0.7);
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+  transition: background-color var(--t-base), color var(--t-base),
+    box-shadow var(--t-base);
+}
+
+.ftSocial__link .btIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.ftSocial__link:hover {
+  color: var(--c-white);
+  background-color: var(--c-accent);
+  box-shadow: inset 0 0 0 1px var(--c-accent);
+}
+
+/* --- Bottom bar (accent) ------------------------------------- */
+
+.siteFooterBar {
+  background-color: var(--c-accent);
+  color: var(--c-white);
+  font-family: var(--font-heading);
+}
+
+.siteFooterBar__port {
+  max-width: var(--w-content);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 0 2em;
+}
+
+.siteFooterBar__copy {
+  margin: 0;
+  padding: 1.7857em 0;
+}
+
+.siteFooterBar__menu {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.6em 2em;
+  padding: 1.7857em 0;
+  list-style: none;
+}
+
+.siteFooterBar__menu a,
+.siteFooterBar__top {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  color: var(--c-white);
+  white-space: nowrap;
+  transition: opacity var(--t-fast);
+}
+
+.siteFooterBar__menu a::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  margin-top: -1px;
+  width: 10px;
+  height: 2px;
+  background: #181818;                    /* dark-skin footer-menu dash */
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: transform 200ms ease;
+}
+
+.siteFooterBar__menu a:hover::before {
+  transform: scaleX(1);
+}
+
+.siteFooterBar__menu a:hover,
+.siteFooterBar__top:hover {
+  opacity: 0.7;
+}
+
+.siteFooterBar__topIcon {
+  display: inline-flex;
+  margin-left: 0.45em;
+}
+
+.siteFooterBar__topIcon .btIcon {
+  width: 13px;
+  height: 13px;
+  transform: rotate(180deg);             /* chevron-down → up */
+}
+
+/* --- Responsive ------------------------------------------- */
+
+@media (max-width: 960px) {
+  .ftBox {
+    flex-basis: 50%;
+    max-width: 50%;
+    margin-bottom: 3.5em;
+  }
+  .ftWidget__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 620px) {
+  .siteFooterWidgets {
+    padding-top: 3em;
+  }
+  .ftBox {
+    flex-basis: 100%;
+    max-width: 100%;
+  }
+  .siteFooterBar__port {
+    flex-direction: column;
+    text-align: center;
+  }
+  .siteFooterBar__copy {
+    padding: 1.4em 0 0.6em;
+  }
+  .siteFooterBar__menu {
+    justify-content: center;
+    padding: 0.6em 0 1.4em;
+  }
+  .siteFooterBar__menu a::before {
+    display: none;
+  }
+}

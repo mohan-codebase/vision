@@ -1,0 +1,638 @@
+/* ==========================================================================
+   Header — reproduces `.mainHeader` under the reference site's body classes:
+   btAlternateGradientHeader · btMenuHorizontal · btMenuRight ·
+   btStickyEnabled · btLightSkin
+   ========================================================================== */
+
+:root {
+  --header-row: 140px;        /* logo height + menu line-height */
+  --header-row-stuck: 70px;   /* btStickyHeaderActive halves it */
+  --menu-gap: 50px;           /* nav > ul > li padding-left */
+  --dropdown-w: 270px;
+}
+
+.mainHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1020;
+  font-family: var(--font-base);
+  background-color: var(--c-white);
+  box-shadow: var(--shadow-header);
+  transition: box-shadow var(--t-base);
+}
+
+/* Shared inner rail: 1260px max, 30px side padding */
+.mainHeader .port {
+  width: 100%;
+  max-width: var(--w-content);
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+}
+
+/* --------------------------------------------------------------------------
+   Top bar — navy strip with the gradient wash
+   -------------------------------------------------------------------------- */
+
+.topBar {
+  position: relative;
+  background-color: var(--c-secondary);
+  color: var(--c-white);
+  font-size: 0.875em;
+  line-height: 2.5;
+}
+
+/* btAlternateGradientHeader: transparent -> black, 15% */
+.topBar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(to right, transparent 0%, #000 100%);
+  opacity: 0.15;
+  pointer-events: none;
+}
+
+.topBar .port {
+  position: relative;
+  z-index: 1;
+}
+
+.topBarPort {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.topTools {
+  display: flex;
+  align-items: center;
+  padding: 0;
+  border: none;
+}
+
+/* The reference zeroes the widget's own margins and spaces siblings by 1.5em;
+   the social icon run tightens to 1em so the cluster keeps its 106px span. */
+.topBar .btIconWidget {
+  height: 36px;
+  margin: 0;
+}
+
+.topTools > * + * {
+  margin-left: 1.5em;
+}
+
+.btTopToolsRight > a.btIconWidget + a.btIconWidget {
+  margin-left: 1em;
+}
+
+.topBar .btIconWidget:hover {
+  color: var(--c-accent);
+}
+
+/* The social cluster's leading label is plain text, not a link */
+.topBar .btTopToolsRight .btIconWidget:first-child .btIconWidgetTitle {
+  margin-left: 0;
+  opacity: 0.9;
+}
+
+/* --------------------------------------------------------------------------
+   Logo area — white, 140px tall
+   -------------------------------------------------------------------------- */
+
+.btLogoArea {
+  position: relative;
+  z-index: 1;
+  background-color: var(--c-white);
+}
+
+.btLogoArea .port {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  line-height: 0;
+  flex: none;
+}
+
+.logo img.btMainLogo {
+  display: block;
+  height: var(--header-row);
+  width: auto;
+  transition: height var(--t-base);
+}
+
+/* --------------------------------------------------------------------------
+   Menu port — nav + tools, pushed right (btMenuRight)
+   -------------------------------------------------------------------------- */
+
+.menuPort {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+  font-family: var(--font-base);
+  font-size: 16px;
+}
+
+.menuPort nav {
+  order: 1;
+}
+
+.menuPort .topBarInMenu {
+  order: 2;
+  display: flex;
+  align-items: center;
+  height: var(--header-row);
+  margin-left: var(--menu-gap);
+  transition: height var(--t-base);
+}
+
+.topBarInMenuCell {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* --- top level ----------------------------------------------------------- */
+
+.menuPort nav > ul {
+  display: flex;
+  align-items: center;
+}
+
+.menuPort nav > ul > li {
+  position: relative;
+  padding: 0 0 0 var(--menu-gap);
+}
+
+.menuPort nav > ul > li > a {
+  display: block;
+  position: relative;
+  line-height: var(--header-row);
+  padding: 0;
+  font-weight: var(--fw-bold);
+  color: var(--c-dark);
+  white-space: nowrap;
+  transition: color var(--t-base), line-height var(--t-base);
+}
+
+.menuPort nav > ul > li > a:hover {
+  color: var(--c-accent);
+}
+
+/* Current item: a 10x2px accent dash 15px to the left of the label */
+.menuPort nav > ul > li.current-menu-item > a::after {
+  content: " ";
+  display: block;
+  position: absolute;
+  z-index: 5;
+  left: -15px;
+  top: 50%;
+  margin-top: -1px;
+  width: 10px;
+  height: 2px;
+  background-color: var(--c-accent);
+  pointer-events: none;
+}
+
+/* White caret pointing into the open dropdown */
+.menuPort nav > ul > li.menu-item-has-children::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 3;
+  left: 50%;
+  margin-left: -33px;
+  bottom: -9px;
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 9px solid var(--c-white);
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: 200ms ease all;
+  pointer-events: none;
+}
+
+.menuPort nav > ul > li.menu-item-has-children.on::before {
+  opacity: 1;
+  transform: translateY(0);
+  transition-delay: 100ms;
+}
+
+/* --- dropdowns ----------------------------------------------------------- */
+
+.menuPort nav ul ul {
+  position: absolute;
+  width: var(--dropdown-w);
+  margin: 0;
+  padding: 0;
+  background-color: var(--c-white);
+  box-shadow: 0 0 30px 0 rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-20px);
+  transform-origin: 0 0;
+  transition: opacity var(--t-base), transform var(--t-base);
+  z-index: 1;
+}
+
+/* first level opens under the item, offset -20px */
+.menuPort nav > ul > li > ul {
+  top: 100%;
+  left: -20px;
+}
+
+/* the last item (Shop) opens right-aligned so it can't overflow the viewport */
+.menuPort nav > ul > li:last-child > ul {
+  left: auto;
+  right: -20px;
+}
+
+/* second level flies out sideways */
+.menuPort nav ul ul ul {
+  top: 0;
+  left: var(--dropdown-w);
+  transform: translateY(0) translateX(-10px);
+}
+
+.menuPort nav > ul > li:last-child ul ul {
+  left: auto;
+  right: var(--dropdown-w);
+}
+
+.menuPort nav > ul > li.on > ul,
+.menuPort nav ul li.on > ul {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0) translateX(0);
+  z-index: 2;
+}
+
+.menuPort nav > ul > li.on {
+  z-index: 10;
+}
+
+.menuPort nav ul ul li {
+  position: relative;
+  font-size: 0.875em;
+  font-family: var(--font-alt);
+  line-height: 1.5;
+  transition: opacity var(--t-base);
+}
+
+.menuPort nav ul ul li a {
+  position: relative;
+  display: block;
+  padding: 0.72em 1.42857em;
+  font-weight: var(--fw-normal);
+  color: var(--c-dark);
+}
+
+/* 2px accent dash that grows in from the left on hover */
+.menuPort nav ul ul li a::before {
+  content: "";
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  margin-top: -1px;
+  width: 0;
+  height: 2px;
+  background: var(--c-accent);
+  transition: 200ms ease all;
+}
+
+.menuPort nav ul ul li a:hover {
+  color: var(--c-accent);
+}
+
+.menuPort nav ul ul li a:hover::before {
+  width: 10px;
+}
+
+/* --- tools: search, cart, phone ------------------------------------------ */
+
+.btTopBox button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  color: var(--c-dark);
+  transition: color var(--t-base);
+}
+
+.btTopBox button:hover {
+  color: var(--c-accent);
+}
+
+.btCartWidget button {
+  position: relative;
+}
+
+.btCartWidget .cart-contents {
+  position: absolute;
+  top: -12px;
+  left: 9px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 19px;
+  height: 19px;
+  padding: 0 4px;
+  border-radius: 10px;
+  background: var(--c-accent);
+  color: var(--c-white);
+  font-size: 10px;
+  font-weight: var(--fw-bold);
+  line-height: 1;
+}
+
+.bt_button_widget {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.4em;
+  padding: 1rem 1.25rem;
+  font-size: 0.875em;
+  line-height: 15px;
+  white-space: nowrap;
+  color: var(--c-white);
+  transition: var(--t-base) all;
+}
+
+.bt_button_widget_accent::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: var(--c-accent);
+  box-shadow: 0 -2px 0 0 rgba(24, 24, 24, 0.15) inset;
+  transition: var(--t-base) all;
+}
+
+.bt_button_widget_accent:hover::before {
+  box-shadow:
+    0 -3px 0 0 rgba(24, 24, 24, 0.15) inset,
+    0 3px 10px rgba(0, 0, 0, 0.3);
+}
+
+.bt_button_widget > * {
+  position: relative;
+  z-index: 2;
+}
+
+.bt_bb_button_text {
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+}
+
+/* --------------------------------------------------------------------------
+   Sticky — 140px rows collapse to 70px
+   -------------------------------------------------------------------------- */
+
+.mainHeader.btStickyHeaderActive .logo img.btMainLogo,
+.mainHeader.btStickyHeaderActive .menuPort .topBarInMenu {
+  height: var(--header-row-stuck);
+}
+
+.mainHeader.btStickyHeaderActive .menuPort nav > ul > li > a {
+  line-height: var(--header-row-stuck);
+}
+
+/* The top bar slides away when stuck, as on the reference site */
+.mainHeader.btStickyHeaderActive .topBar {
+  display: none;
+}
+
+/* Spacer replaces the fixed header's height in the flow */
+.btHeaderSpacer {
+  height: calc(var(--header-row) + 40px);
+}
+
+/* --------------------------------------------------------------------------
+   Mobile trigger + panel (<=1200px, where the 6-item nav stops fitting)
+   -------------------------------------------------------------------------- */
+
+.btHorizontalMenuTrigger {
+  display: none;
+  order: 3;
+  margin-left: 1em;
+  color: var(--c-dark);
+  transition: color var(--t-base);
+}
+
+.btHorizontalMenuTrigger:hover {
+  color: var(--c-accent);
+}
+
+.btHideMenu .btHorizontalMenuTrigger {
+  display: inline-flex;
+}
+
+.btMobileScrim {
+  position: fixed;
+  inset: 0;
+  z-index: 1030;
+  background: rgba(24, 24, 24, 0.5);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity var(--t-base);
+}
+
+.btMobileScrim.on {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btMobilePanel {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1040;
+  width: 320px;
+  max-width: 85vw;
+  padding: 1.5em 0 2em;
+  overflow-y: auto;
+  background: var(--c-white);
+  box-shadow: -10px 0 40px rgba(0, 0, 0, 0.2);
+  transform: translateX(100%);
+  transition: transform 400ms var(--ease);
+}
+
+.btMobilePanel.on {
+  transform: translateX(0);
+}
+
+.btMobileClose {
+  display: block;
+  margin: 0 1.5rem 1rem auto;
+  color: var(--c-dark);
+}
+
+.btMobileClose:hover {
+  color: var(--c-accent);
+}
+
+/* In the panel the menu is a plain accordion: static flow, toggled open. */
+.btMobilePanel nav > ul,
+.btMobilePanel nav ul ul {
+  display: block;
+  position: static;
+  width: auto;
+  background: none;
+  box-shadow: none;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+}
+
+.btMobilePanel nav ul ul {
+  display: none;
+  padding-left: 1rem;
+}
+
+.btMobilePanel nav li.on > ul {
+  display: block;
+}
+
+.btMobilePanel nav li {
+  position: relative;
+  padding: 0;
+  font-size: 1em;
+  font-family: var(--font-base);
+  border-bottom: 1px solid var(--c-border-soft);
+}
+
+.btMobilePanel nav ul ul li {
+  font-size: 0.9375em;
+  font-family: var(--font-alt);
+  border-bottom: 0;
+}
+
+.btMobilePanel nav li > a {
+  display: block;
+  padding: 0.85em 3rem 0.85em 1.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-dark);
+}
+
+.btMobilePanel nav ul ul li > a {
+  font-weight: var(--fw-normal);
+  padding-top: 0.55em;
+  padding-bottom: 0.55em;
+}
+
+.btMobilePanel nav li > a:hover {
+  color: var(--c-accent);
+}
+
+/* subToggler is hidden on desktop (hover drives the dropdowns) and becomes
+   the accordion control inside the panel */
+.subToggler {
+  display: none;
+}
+
+.btMobilePanel .subToggler {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 44px;
+  height: 44px;
+  color: var(--c-dark);
+  opacity: 0.5;
+  transition: 200ms ease all;
+}
+
+.btMobilePanel li.on > .subToggler {
+  opacity: 1;
+  transform: rotate(180deg);
+}
+
+.btMobilePanel li.on > .subToggler .btIcon svg {
+  transform: none;
+}
+
+.btMobileFoot {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+}
+
+.btMobileSocial {
+  display: flex;
+  gap: 1rem;
+  color: var(--c-accent);
+}
+
+.btMobileSocial a:hover {
+  color: var(--c-secondary);
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  :root {
+    --header-row: 100px;
+  }
+
+  .btHeaderSpacer {
+    height: calc(var(--header-row) + 40px);
+  }
+}
+
+/* Below 992px the top bar drops its office line, then collapses entirely */
+@media (max-width: 992px) {
+  .topBar .btTopToolsRight .btIconWidget.btWidgetWithText:first-child {
+    display: none;
+  }
+}
+
+@media (max-width: 782px) {
+  .topBar {
+    display: none;
+  }
+
+  .btHeaderSpacer {
+    height: var(--header-row);
+  }
+}
+
+@media (max-width: 620px) {
+  :root {
+    --header-row: 80px;
+  }
+
+  /* keep the phone button, drop the secondary tools */
+  .btTopBox {
+    display: none;
+  }
+
+  .menuPort .topBarInMenu {
+    margin-left: 0;
+  }
+
+  .bt_button_widget {
+    padding: 0.85rem 1rem;
+    font-size: 0.8125em;
+  }
+}
+
+@media (max-width: 420px) {
+  .bt_bb_button_text {
+    display: none;
+  }
+
+  .bt_button_widget {
+    padding: 0.85rem;
+  }
+}

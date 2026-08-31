@@ -1,0 +1,255 @@
+/* ==========================================================================
+   Section 1 — Hero slider
+   Reference: `bt_bb_section.bt_bb_layout_wide` > `bt_bb_content_slider`
+     · fade animation, autoplay 4500ms, dots pinned right, no arrows
+     · full-bleed photo per slide, content rail capped at 1260px / 30px gutter
+     · two 50/50 inner columns — copy on one side, photo shows through the other
+   The reference photos are bright on the copy side, so the hero ink is dark
+   (#191919), matching the reference; there is no dark image overlay.
+   ========================================================================== */
+
+.heroSlider {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background-color: #191919;
+}
+
+/* All slides share one grid cell → the section is as tall as the tallest
+   slide and the crossfade never nudges the page height. */
+.heroSlider__viewport {
+  display: grid;
+  grid-template-areas: 'slide';
+}
+
+.heroSlide {
+  grid-area: slide;
+  min-width: 0;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 600ms ease-out, visibility 0s linear 600ms;
+}
+
+.heroSlide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 600ms ease-out;
+}
+
+/* Content rail — mirrors
+   `.bt_bb_layout_wide .bt_bb_content_slider ... .bt_bb_content_slider_item_content` */
+.heroSlide__inner {
+  max-width: 1260px;
+  margin: 0 auto;
+  padding: 0 30px;
+}
+
+/* Inner row — `.bt_bb_row_inner { display:flex; margin:0 -20px }` */
+.heroSlide__row {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -20px;
+  min-height: 760px;          /* the reference hero's standing height */
+  align-items: center;        /* the stacked separators centre the copy block */
+}
+
+.heroSlide__col {
+  flex: 1 1 0;
+  max-width: 50%;
+  padding: 4.5em 20px;        /* column `bt_bb_padding_normal` + slide breathing room */
+}
+
+.heroSlide__col--media { padding: 0; }
+
+/* Slide 2 puts the copy in the second column. */
+.heroSlide--right .heroSlide__col--text { order: 2; }
+.heroSlide--right .heroSlide__col--media { order: 1; }
+
+/* --- Headline — `bt_bb_headline.bt_bb_size_huge` -------------------------- */
+
+.heroHeadline {
+  color: #191919;
+}
+
+/* Eyebrow with the accent dash — `bt_bb_dash_top` + `bt_bb_size_huge` */
+.heroHeadline__super {
+  display: flex;
+  align-items: center;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  text-transform: uppercase;
+  letter-spacing: 0;
+  line-height: 1.125;
+  margin-bottom: 1.4em;
+}
+
+.heroHeadline__super::before {
+  content: '';
+  width: 4.375rem;           /* huge dash */
+  border-top: 2px solid var(--c-accent);
+  margin-right: 1.1rem;
+  flex: 0 0 auto;
+}
+
+.heroHeadline__super:empty { display: none; }
+
+.heroHeadline__title {
+  font-family: var(--font-heading);
+  font-size: 5rem;           /* `bt_bb_size_huge` → 5rem */
+  line-height: 1.08;
+  color: inherit;
+  letter-spacing: -0.01em;
+}
+
+.heroHeadline__plain {
+  display: block;
+  font-weight: var(--fw-light);
+}
+
+.heroHeadline__accent {
+  display: block;
+  font-weight: var(--fw-bold);
+  color: inherit;
+}
+
+.heroHeadline__sub {
+  max-width: 30em;
+  margin-top: 1.3em;
+  font-family: var(--font-alt);
+  font-size: 1.125rem;
+  line-height: 1.5;
+  color: inherit;
+}
+
+/* --- Buttons — `bt_bb_button.bt_bb_style_filled` ------------------------- */
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: 2.6em;
+}
+
+.heroButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em 3em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  line-height: 1;
+  color: #fff;
+  transition: background-color 300ms ease, color 300ms ease, box-shadow 300ms ease;
+}
+
+.heroButton--accent {
+  background-color: var(--c-accent);
+}
+.heroButton--accent:hover {
+  background-color: #fff;
+  color: var(--c-accent);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+}
+
+.heroButton--navy {
+  background-color: var(--c-secondary);
+}
+.heroButton--navy:hover {
+  background-color: #fff;
+  color: var(--c-secondary);
+  box-shadow: inset 0 0 0 2px var(--c-secondary);
+}
+
+/* --- Dots — `bt_bb_show_dots_right` + `bt_bb_dots_style_accent_dot` ------ */
+
+.heroDots {
+  position: absolute;
+  right: 2em;
+  top: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+}
+
+.heroDots li {
+  position: relative;
+  width: 1em;
+  height: 2.4em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Inactive: a faint vertical hairline (`li:before`, scaleY(.8), opacity .2) */
+.heroDots li::before {
+  content: '';
+  width: 2px;
+  height: 100%;
+  background-color: #191919;
+  opacity: 0.2;
+  transform: scaleY(0.8);
+  transition: 200ms ease all;
+}
+
+/* Active / hover: the accent dot (`li:after`, scale 0 → 1) */
+.heroDots li::after {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: var(--c-accent);
+  transform: scale(0);
+  transition: 200ms ease all;
+}
+
+.heroDots li:hover::before,
+.heroDots li.is-active::before {
+  transform: scaleY(0);
+  opacity: 0;
+}
+
+.heroDots li.is-active::after { transform: scale(1); }
+.heroDots li:hover::after { transform: scale(0.8); }
+
+.heroDots button {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  font-size: 0;
+  background: none;
+  cursor: pointer;
+}
+
+/* --- Responsive (desktop-first, per the reference breakpoints) ----------- */
+
+@media (max-width: 1200px) {
+  .heroHeadline__title { font-size: 3.5rem; }
+  .heroSlide__row { min-height: 620px; }
+  .heroSlide__col { padding: 3.5em 20px; }
+}
+
+@media (max-width: 992px) {
+  .heroSlide__col--text { max-width: 100%; flex-basis: 100%; }
+  .heroSlide__col--media { display: none; }
+  .heroSlide--right .heroSlide__col--text { order: 0; }
+  .heroHeadline__title { font-size: 3rem; }
+  .heroSlide__row { min-height: 520px; }
+  .heroDots { right: 1em; }
+}
+
+@media (max-width: 620px) {
+  .heroHeadline__title { font-size: 2.4rem; }
+  .heroHeadline__sub { font-size: 1rem; }
+  .heroButton { padding: 0.95em 2em; font-size: 0.9375rem; }
+  .heroSlide__inner { padding: 0 20px; }
+}

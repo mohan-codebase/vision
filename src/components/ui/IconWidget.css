@@ -1,0 +1,38 @@
+/* .btIconWidget — inline-flex, .5em breathing room either side */
+.btIconWidget {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  line-height: inherit;
+  margin-left: 0.5em;
+  margin-right: 0.5em;
+  color: inherit;
+  transition: color var(--t-base);
+}
+
+.btIconWidgetIcon {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+}
+
+/* Accent variant tints only the icon */
+.btAccentIconWidget .btIconWidgetIcon {
+  color: var(--c-accent);
+}
+
+.btIconWidgetContent {
+  display: inline-flex;
+  align-items: center;
+}
+
+.btIconWidgetTitle {
+  margin-left: 0.5em;
+  font-family: var(--font-alt);
+}
+
+.btIconWidgetText {
+  margin-left: 0.5em;
+  font-size: 1em;
+  text-transform: none;
+}

@@ -1,0 +1,19 @@
+/* Counter — animated statistic number (`bt_bb_counter_holder`). */
+
+.btCounter {
+  display: inline-block;
+  font-family: var(--font-base);
+  font-weight: var(--fw-black);      /* theme uses 800 */
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+.btCounter-small  { font-size: 1em; }
+.btCounter-normal { font-size: 2em; }
+.btCounter-large  { font-size: 3em; }    /* `bt_bb_counter_holder.bt_bb_size_large` */
+.btCounter-xlarge { font-size: 4em; }
+
+.btCounterSuffix {
+  font: inherit;
+}

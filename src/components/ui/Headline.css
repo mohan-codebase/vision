@@ -1,0 +1,61 @@
+.btHeadline {
+  position: relative;
+}
+
+.btAlign-left   { text-align: left; }
+.btAlign-center { text-align: center; }
+.btAlign-right  { text-align: right; }
+
+/* Eyebrow */
+.btHeadlineSuper {
+  display: block;
+  font-family: var(--font-alt);
+  font-size: 0.875em;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  margin-bottom: 0.75em;
+}
+
+/* Title */
+.btHeadlineTitle {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-light);
+  line-height: var(--lh-heading);
+  color: inherit;
+}
+
+.btHeadlineAccent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.btAccent-block  { display: block; }
+.btAccent-inline { display: inline; margin-left: 0.25em; }
+
+/* Rule under the title */
+.btHeadlineDash {
+  display: block;
+  width: 60px;
+  height: 3px;
+  background-color: var(--c-accent);
+  margin-top: 1em;
+}
+
+.btAlign-center .btHeadlineDash { margin-left: auto; margin-right: auto; }
+.btAlign-right  .btHeadlineDash { margin-left: auto; }
+
+/* Sub copy */
+.btHeadlineSub {
+  max-width: 768px;
+  margin-top: 1.5em;
+  font-family: var(--font-base);
+  font-size: 1em;
+  line-height: var(--lh-base);
+  color: var(--c-body);
+}
+
+.btAlign-center .btHeadlineSub { margin-left: auto; margin-right: auto; }
+
+.btSchemeDark .btHeadlineSub { color: var(--c-on-dark); }

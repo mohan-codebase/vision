@@ -1,0 +1,64 @@
+/* Base typography — theme defaults */
+
+body {
+  font-family: var(--font-base);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  line-height: var(--lh-base);
+  color: var(--c-body);
+  background-color: var(--c-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  line-height: var(--lh-heading);
+  color: var(--c-secondary);
+}
+
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+h4 { font-size: var(--fs-h4); }
+h5 { font-size: var(--fs-h5); }
+h6 { font-size: var(--fs-h6); font-family: var(--font-base); }
+
+p {
+  margin-bottom: 1em;
+}
+
+p:last-child {
+  margin-bottom: 0;
+}
+
+strong,
+b {
+  font-weight: var(--fw-bold);
+}
+
+/* Responsive heading scale (theme section 16) */
+@media (max-width: 992px) {
+  :root {
+    --fs-h1: 2.5em;
+    --fs-h2: 2.1em;
+    --fs-h3: 1.8em;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fs-h1: 2.1em;
+    --fs-h2: 1.8em;
+    --fs-h3: 1.6em;
+    --fs-h4: 1.4em;
+  }
+}
+
+@media (max-width: 480px) {
+  :root {
+    --fs-h1: 1.9em;
+    --fs-h2: 1.6em;
+  }
+}

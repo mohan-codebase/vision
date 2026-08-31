@@ -1,0 +1,17 @@
+.btIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  flex: none;
+}
+
+.btIcon svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.btIcon-small  { width: 14px; height: 14px; }
+.btIcon-normal { width: 16px; height: 16px; }
+.btIcon-large  { width: 22px; height: 22px; }

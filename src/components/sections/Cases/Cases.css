@@ -1,0 +1,327 @@
+/* ==========================================================================
+   Section 8 — Consultancy Cases
+   Reference: `bt_bb_section.bt_bb_layout_boxed_1200`, top spacing normal,
+   bottom spacing large, `bgn-cases.png` triangles at the top / size contain.
+     · headline `bt_bb_size_large` + `bt_bb_dash_top` (no subtitle)
+     · `bt_bb_post_grid_filter` — 700 weight, 50px item gap, `:before` accent
+       dash (`scaleX(0) → 1`) on active/hover, text → accent on active/hover
+     · `bt_bb_masonry_portfolio_tiles.bt_bb_look_triangular` 3-col grid:
+       tile lifts 5px + dark glow on hover; centred white title fades out; a
+       white panel (`translateY(100%) → 0`) slides up with a navy angled
+       corner (`#1b4962`) and a skewed "+" mark
+   ========================================================================== */
+
+.cases {
+  position: relative;
+  background-color: var(--c-white);
+  padding-top: 2em;                         /* section top spacing: normal */
+  padding-bottom: var(--space-large);       /* section bottom spacing: large */
+  overflow: hidden;
+}
+
+.cases::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55vw;
+  max-height: 640px;
+  background: url('../../../assets/images/bgn-cases.png') top center / 100% auto
+    no-repeat;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cases__cell {
+  position: relative;
+  z-index: 1;
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+/* --- Headline — `bt_bb_size_large` --------------------------------- */
+
+.casesHeadline__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  line-height: 1;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
+}
+
+.casesHeadline__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.casesHeadline__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.casesHeadline__plain {
+  font-weight: var(--fw-light);
+  color: var(--c-secondary);               /* `.bt_bb_headline u { color:#1b4962 }` */
+}
+
+.casesHeadline__accent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);                  /* `.bt_bb_headline b { color:#e94d65 }` */
+}
+
+/* --- Filter — `bt_bb_post_grid_filter` --------------------------- */
+
+.casesFilter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 50px;                              /* `margin: 0 50px 0 0` per item */
+  padding: 2.25em 0 1.5em;                  /* separator small/normal + filter padding */
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  color: var(--c-dark);
+}
+
+.casesFilter__item {
+  position: relative;
+  padding: 0.5em 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  transition: color 200ms ease;
+}
+
+.casesFilter__item::before {
+  content: '';
+  position: absolute;
+  left: -15px;
+  top: 50%;
+  margin-top: -1px;
+  width: 10px;
+  height: 2px;
+  background-color: var(--c-accent);
+  transform: scaleX(0);
+  transform-origin: 0 0;
+  transition: transform 200ms ease;
+  pointer-events: none;
+}
+
+.casesFilter__item:hover,
+.casesFilter__item.is-active {
+  color: var(--c-accent);
+}
+
+.casesFilter__item:hover::before,
+.casesFilter__item.is-active::before {
+  transform: scaleX(1);
+}
+
+/* --- Grid — `bt_bb_columns_3 bt_bb_gap_normal` ------------------- */
+
+.casesGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;                                /* `bt_bb_gap_normal` ≈ 1.25em */
+  list-style: none;
+}
+
+.caseTile {
+  animation: caseTileIn 400ms ease both;
+}
+
+@keyframes caseTileIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+}
+
+/* --- Tile ------------------------------------------------------- */
+
+.caseTile__link {
+  position: relative;
+  display: block;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  background-color: var(--c-secondary);
+  transition: transform 300ms ease, box-shadow 300ms ease;
+}
+
+.caseTile__link:hover {
+  transform: translateY(-5px);              /* `.bt_bb_grid_item:hover` */
+  z-index: 2;
+  box-shadow: 0 2px 20px rgba(25, 25, 25, 0.28);
+}
+
+.caseTile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Centred title — `.bt_bb_grid_item_post_title_init h5` */
+.caseTile__title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1em;
+  text-align: center;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 1.875rem;
+  line-height: 1.15;
+  color: var(--c-white);
+  text-shadow: 0 2px 5px rgba(24, 24, 24, 0.7);
+  background: linear-gradient(
+    to bottom,
+    rgba(24, 24, 24, 0.1),
+    rgba(24, 24, 24, 0.4)
+  );
+  transition: opacity 300ms ease, transform 300ms ease;
+}
+
+.caseTile__link:hover .caseTile__title {
+  opacity: 0;
+  transform: scale(1.1);
+}
+
+/* White panel that slides up — `.bt_bb_look_triangular ... _inner_content` */
+.caseTile__panel {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 1.9em 1.875em 1.5625em;
+  background: var(--c-white);
+  clip-path: polygon(0 26px, 100% 0, 100% 100%, 0 100%); /* angled top edge */
+  transform: translateY(100%);
+  opacity: 0;
+  transition: transform 400ms ease, opacity 400ms ease;
+}
+
+.caseTile__link:hover .caseTile__panel {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+/* Dark fade above the panel — `_inner_content:before` */
+.caseTile__panel::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 110px;
+  transform: translateY(-100%);
+  background: linear-gradient(to top, #191919 0%, transparent 100%);
+  opacity: 0.5;
+}
+
+/* Navy angled corner — `.triangle-starter:after` (border-color #1b4962) */
+.caseTile__corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 104px 40px 0;
+  border-color: transparent var(--c-secondary) transparent transparent;
+}
+
+/* Skewed "+" mark — `.triangle-plus` (scale 2 → 1, delay 300ms) */
+.caseTile__plus {
+  position: absolute;
+  right: 1.6em;
+  top: 0.55em;
+  width: 1.5em;
+  height: 1.5em;
+  color: var(--c-secondary);
+  transform: scale(2) skewY(15deg);
+  opacity: 0;
+  transition: transform 300ms ease, opacity 300ms ease;
+}
+
+.caseTile__plus::before,
+.caseTile__plus::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 14px;
+  height: 2px;
+  margin: -1px 0 0 -7px;
+  background: currentColor;
+}
+
+.caseTile__plus::after {
+  transform: rotate(90deg);
+}
+
+.caseTile__link:hover .caseTile__plus {
+  transform: scale(1) skewY(15deg);
+  opacity: 1;
+  transition-delay: 300ms;
+}
+
+/* Panel meta line — `.bt_bb_grid_item_post_excerpt` */
+.caseTile__meta {
+  position: relative;
+  margin: 0;
+  font-family: var(--font-base);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--c-dark);
+}
+
+/* --- Responsive ----------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .casesHeadline__title {
+    font-size: 2.4rem;
+  }
+  .caseTile__title {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .casesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .casesFilter {
+    gap: 0 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .casesHeadline__title {
+    font-size: 2rem;
+  }
+  .casesGrid {
+    grid-template-columns: 1fr;
+  }
+  .caseTile__link {
+    aspect-ratio: 16 / 10;
+  }
+  .casesFilter {
+    gap: 0 24px;
+    font-size: 0.9375rem;
+  }
+}

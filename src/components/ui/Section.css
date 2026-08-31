@@ -1,0 +1,58 @@
+.btSection {
+  position: relative;
+}
+
+.btSection > .btPort {
+  position: relative;
+}
+
+.btSection > .btPort > .btCell {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* --- Widths --------------------------------------------------------------- */
+.btLayout-wide > .btPort > .btCell {
+  width: 100%;
+}
+
+.btLayout-boxed1200 > .btPort > .btCell {
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+}
+
+.btLayout-boxed1400 > .btPort > .btCell {
+  width: var(--w-boxed-1400);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+}
+
+/* --- Vertical spacing ----------------------------------------------------- */
+.btPt-normal > .btPort { padding-top: var(--space-normal); }
+.btPt-medium > .btPort { padding-top: var(--space-medium); }
+.btPt-large  > .btPort { padding-top: var(--space-large); }
+
+.btPb-normal > .btPort { padding-bottom: var(--space-normal); }
+.btPb-medium > .btPort { padding-bottom: var(--space-medium); }
+.btPb-large  > .btPort { padding-bottom: var(--space-large); }
+
+@media (max-width: 768px) {
+  .btPt-medium > .btPort { padding-top: var(--space-medium-sm); }
+  .btPt-large  > .btPort { padding-top: var(--space-large-sm); }
+  .btPb-medium > .btPort { padding-bottom: var(--space-medium-sm); }
+  .btPb-large  > .btPort { padding-bottom: var(--space-large-sm); }
+}
+
+/* --- Dark color scheme ---------------------------------------------------- */
+.btSchemeDark {
+  background-color: var(--c-dark-alt);
+  color: var(--c-on-dark);
+}
+
+.btSchemeDark h1,
+.btSchemeDark h2,
+.btSchemeDark h3,
+.btSchemeDark h4,
+.btSchemeDark h5,
+.btSchemeDark h6 {
+  color: var(--c-on-dark-strong);
+}

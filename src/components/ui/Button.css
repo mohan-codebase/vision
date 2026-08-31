@@ -1,0 +1,61 @@
+.btButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.875em;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  border-radius: var(--radius-soft);
+  transition: var(--t-base) all;
+  cursor: pointer;
+}
+
+.btButton-normal { padding: 1.1em 2.2em; }
+.btButton-small  { padding: 0.8em 1.6em; font-size: 0.8125em; }
+.btButton-large  { padding: 1.3em 2.8em; }
+
+/* filled */
+.btButton-filled {
+  background-color: var(--c-accent);
+  color: var(--c-white);
+}
+.btButton-filled:hover {
+  background-color: var(--c-accent-dark);
+}
+
+/* outline */
+.btButton-outline {
+  background-color: transparent;
+  color: currentColor;
+  box-shadow: inset 0 0 0 2px currentColor;
+}
+.btButton-outline:hover {
+  background-color: var(--c-accent);
+  color: var(--c-white);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+}
+
+/* link */
+.btButton-link {
+  padding: 0;
+  background: none;
+  color: var(--c-accent);
+  text-transform: none;
+  letter-spacing: 0;
+  font-size: 1em;
+}
+.btButton-link:hover {
+  color: var(--c-secondary);
+}
+
+.btButtonIcon {
+  display: inline-flex;
+  line-height: 1;
+  transition: transform var(--t-base);
+}
+
+.btButton:hover .btButtonIcon {
+  transform: translateX(3px);
+}

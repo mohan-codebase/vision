@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Section 6 — Client logo carousel
+   Reference: `bt_bb_section.bt_bb_layout_boxed_1200`, top spacing normal,
+   bottom spacing medium, `background-color:#f5f5f5`.
+     · `bt_bb_slider.bt_bb_multiple_slides.bt_bb_animation_slide`
+     · `slidesToShow: 6`, autoplay 3000ms, slide speed 300ms
+     · `bt_bb_arrows_size_large` (4.375em), `bt_bb_arrows_style_transparent_dark`
+       (transparent bg, #181818 glyph), `bt_bb_arrows_position_outside` (-6em)
+     · leading + trailing `bt_bb_separator` spacing medium (hidden on mobile)
+   ========================================================================== */
+
+.clientLogos {
+  background-color: #f5f5f5;
+  padding: 5.75em 0 6em;                 /* section normal/medium + inner medium separators */
+}
+
+.clientLogos__cell {
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.clCarousel {
+  position: relative;
+}
+
+/* --- Track ---------------------------------------------------------- */
+
+.clViewport {
+  overflow: hidden;
+}
+
+.clTrack {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  will-change: transform;
+}
+
+.clItem {
+  flex: 0 0 calc(100% / var(--pv, 6));
+  max-width: calc(100% / var(--pv, 6));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 18px;
+  min-height: 90px;
+}
+
+.clItem img {
+  width: 100%;
+  max-width: 190px;
+  height: auto;
+  opacity: 0.65;                         /* Avantage client-logo treatment: dim → full on hover */
+  transition: opacity var(--t-base);
+}
+
+.clItem:hover img {
+  opacity: 1;
+}
+
+/* --- Arrows — large, transparent, dark glyph, outside --------------- */
+
+.clArrow {
+  position: absolute;
+  top: 50%;
+  width: 4.375em;                        /* `bt_bb_arrows_size_large` */
+  height: 4.375em;
+  margin-top: -2.1875em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;               /* `bt_bb_arrows_style_transparent_dark` */
+  color: #181818;
+  cursor: pointer;
+  transition: color var(--t-base), transform var(--t-base);
+  z-index: 2;
+}
+
+.clArrow .btIcon {
+  width: 32px;                           /* :before font-size 2rem */
+  height: 32px;
+}
+
+.clArrow--prev {
+  left: -6em;                            /* `bt_bb_arrows_position_outside` + size large */
+}
+
+.clArrow--next {
+  right: -6em;
+}
+
+.clArrow:hover {
+  color: var(--c-accent);
+}
+
+/* --- Responsive --------------------------------------------------- */
+
+@media (max-width: 1280px) {
+  .clArrow--prev {
+    left: -3.25em;
+  }
+  .clArrow--next {
+    right: -3.25em;
+  }
+}
+
+@media (max-width: 1024px) {
+  .clientLogos {
+    padding: 4.5em 0 4.75em;
+  }
+}
+
+@media (max-width: 768px) {
+  .clientLogos {
+    padding: 3em 0 3.25em;
+  }
+  .clArrow {
+    width: 3em;
+    height: 3em;
+    margin-top: -1.5em;
+  }
+  .clArrow--prev {
+    left: -1.25em;
+  }
+  .clArrow--next {
+    right: -1.25em;
+  }
+  .clItem {
+    padding: 0 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .clArrow--prev {
+    left: -0.5em;
+  }
+  .clArrow--next {
+    right: -0.5em;
+  }
+}
