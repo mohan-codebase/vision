@@ -1,18 +1,18 @@
 import { whoWeWorkWith } from '../../../data/home.js'
 import './WhoWeWorkWith.css'
 
-import portfolio01 from '../../../assets/images/portfolio-01.jpg'
-import portfolio02 from '../../../assets/images/portfolio-02.jpg'
-import portfolio03 from '../../../assets/images/portfolio-03.jpg'
-import portfolio04 from '../../../assets/images/portfolio-04.jpg'
-import portfolio05 from '../../../assets/images/portfolio-05.jpg'
+import workWith01 from '../../../assets/images/who-we-work-with-1-clean.avif'
+import workWith02 from '../../../assets/images/who-we-work-with-2-clean.avif'
+import workWith03 from '../../../assets/images/who-we-work-with-3-clean.avif'
+import workWith04 from '../../../assets/images/who-we-work-with-4-clean.avif'
+import workWith05 from '../../../assets/images/who-we-work-with-5-clean.avif'
 
 const IMAGES = {
-  'portfolio-01.jpg': portfolio01,
-  'portfolio-02.jpg': portfolio02,
-  'portfolio-03.jpg': portfolio03,
-  'portfolio-04.jpg': portfolio04,
-  'portfolio-05.jpg': portfolio05,
+  'who-we-work-with-1-clean.avif': workWith01,
+  'who-we-work-with-2-clean.avif': workWith02,
+  'who-we-work-with-3-clean.avif': workWith03,
+  'who-we-work-with-4-clean.avif': workWith04,
+  'who-we-work-with-5-clean.avif': workWith05,
 }
 
 /**

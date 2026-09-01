@@ -6,7 +6,7 @@
 .ctaBanner {
   position: relative;
   background-color: var(--c-white);
-  padding: var(--space-medium) 0 var(--space-large);
+  padding: 2.5em 0 3em;
   overflow: hidden;
 }
 

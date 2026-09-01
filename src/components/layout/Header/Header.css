@@ -5,9 +5,9 @@
    ========================================================================== */
 
 :root {
-  --header-row: 140px;        /* logo height + menu line-height */
-  --header-row-stuck: 70px;   /* btStickyHeaderActive halves it */
-  --menu-gap: 50px;           /* nav > ul > li padding-left */
+  --header-row: 76px;        /* logo height + menu line-height */
+  --header-row-stuck: 60px;   /* btStickyHeaderActive halves it */
+  --menu-gap: 32px;           /* nav > ul > li padding-left */
   --dropdown-w: 270px;
 }
 
@@ -39,8 +39,8 @@
   position: relative;
   background-color: var(--c-secondary);
   color: var(--c-white);
-  font-size: 0.875em;
-  line-height: 2.5;
+  font-size: 0.8125rem;
+  line-height: 2.2;
 }
 
 /* btAlternateGradientHeader: transparent -> black, 15% */
@@ -75,7 +75,7 @@
 /* The reference zeroes the widget's own margins and spaces siblings by 1.5em;
    the social icon run tightens to 1em so the cluster keeps its 106px span. */
 .topBar .btIconWidget {
-  height: 36px;
+  height: 30px;
   margin: 0;
 }
 
@@ -98,7 +98,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   Logo area — white, 140px tall
+   Logo area — white, sleek height
    -------------------------------------------------------------------------- */
 
 .btLogoArea {
@@ -119,7 +119,8 @@
 
 .logo img.btMainLogo {
   display: block;
-  height: var(--header-row);
+  height: 48px;
+  max-height: 48px;
   width: auto;
   transition: height var(--t-base);
 }
@@ -392,7 +393,10 @@
    Sticky — 140px rows collapse to 70px
    -------------------------------------------------------------------------- */
 
-.mainHeader.btStickyHeaderActive .logo img.btMainLogo,
+.mainHeader.btStickyHeaderActive .logo img.btMainLogo {
+  height: 38px;
+}
+
 .mainHeader.btStickyHeaderActive .menuPort .topBarInMenu {
   height: var(--header-row-stuck);
 }
@@ -408,7 +412,7 @@
 
 /* Spacer replaces the fixed header's height in the flow */
 .btHeaderSpacer {
-  height: calc(var(--header-row) + 40px);
+  height: calc(var(--header-row) + 32px);
 }
 
 /* --------------------------------------------------------------------------
@@ -582,11 +586,11 @@
 
 @media (max-width: 1200px) {
   :root {
-    --header-row: 100px;
+    --header-row: 68px;
   }
 
   .btHeaderSpacer {
-    height: calc(var(--header-row) + 40px);
+    height: calc(var(--header-row) + 32px);
   }
 }
 
@@ -609,7 +613,11 @@
 
 @media (max-width: 620px) {
   :root {
-    --header-row: 80px;
+    --header-row: 60px;
+  }
+
+  .logo img.btMainLogo {
+    height: 38px;
   }
 
   /* keep the phone button, drop the secondary tools */
@@ -622,7 +630,7 @@
   }
 
   .bt_button_widget {
-    padding: 0.85rem 1rem;
+    padding: 0.6rem 0.9rem;
     font-size: 0.8125em;
   }
 }
@@ -633,6 +641,6 @@
   }
 
   .bt_button_widget {
-    padding: 0.85rem;
+    padding: 0.6rem;
   }
 }

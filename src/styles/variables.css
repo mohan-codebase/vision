@@ -63,12 +63,12 @@
   --grid-gutter:  30px;
 
   /* --- Section spacing scale (bt_bb_*_spacing_*) ------------------------- */
-  --space-normal: 2em;      /* 32px  */
-  --space-medium: 5em;      /* 80px  */
-  --space-large:  8.75em;   /* 140px */
+  --space-normal: 1.5em;    /* 24px  */
+  --space-medium: 2.75em;   /* 44px  */
+  --space-large:  3.5em;    /* 56px  */
   /* Mobile overrides (<=768px) */
-  --space-medium-sm: 3em;      /* 48px */
-  --space-large-sm:  4.375em;  /* 70px */
+  --space-medium-sm: 2em;      /* 32px */
+  --space-large-sm:  2.5em;    /* 40px */
 
   /* --- Chrome ------------------------------------------------------------ */
   --header-height: 100px;

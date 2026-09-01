@@ -16,8 +16,8 @@ export const heroSlides = [
     title: 'Set up your business',
     accent: 'in the UAE with confidence',
     text: 'End-to-end company formation and corporate support across Mainland, Free Zone and Offshore — handled with precision, from first idea to operational launch.',
-    image: 'img-slider-01.jpg',
-    side: 'left',
+    image: 'banner-1.avif',
+    side: 'right',
     buttons: [
       { label: 'Get Started', href: '#request-callback', variant: 'accent' },
       { label: 'Explore Business Setup', href: '#business-setup', variant: 'navy' },
@@ -28,8 +28,8 @@ export const heroSlides = [
     title: 'The right structure',
     accent: 'for your goals',
     text: 'We act as strategic advisors — helping you choose the right jurisdiction, navigate regulations and build a strong foundation for long-term success.',
-    image: 'img-slider-02.jpg',
-    side: 'right',
+    image: 'banner-2.avif',
+    side: 'left',
     buttons: [
       { label: 'Request a Callback', href: '#request-callback', variant: 'accent' },
       { label: 'Our Services', href: '#services', variant: 'navy' },
@@ -40,11 +40,23 @@ export const heroSlides = [
     title: 'More than paperwork —',
     accent: 'a partner for growth',
     text: 'From company formation to visas, PRO services and banking, we manage the entire process so you can focus on building your business.',
-    image: 'img-slider-03.jpg',
+    image: 'banner-3.avif',
     side: 'left',
     buttons: [
       { label: 'Get Started', href: '#request-callback', variant: 'accent' },
       { label: 'Why Vision', href: '#why-vision', variant: 'navy' },
+    ],
+  },
+  {
+    super: 'OUR APPROACH & COMMITMENT',
+    title: 'We partner with you',
+    accent: 'throughout your journey',
+    text: 'Delivering value, building trust, and ensuring your business operates with confidence and long-term success in the UAE.',
+    image: 'banner-4.avif',
+    side: 'left',
+    buttons: [
+      { label: 'Request a Callback', href: '#request-callback', variant: 'accent' },
+      { label: 'Our Commitment', href: '#commitment', variant: 'navy' },
     ],
   },
 ]
@@ -106,7 +118,7 @@ export const ourStory = {
   super: 'OUR STORY',
   title: 'Why businesses',
   accent: 'choose Vision',
-  image: 'img-experience.png',
+  image: 'our-story.avif',
   paragraphs: [
     'At Vision Business Setup, we provide end-to-end business setup and corporate support services in the UAE. From company formation across Mainland, Free Zone, and Offshore jurisdictions to visa processing and PRO services, we manage the entire process with precision and efficiency. Our role goes beyond documentation—we act as strategic advisors, helping clients choose the right structure, navigate regulations, and build a strong foundation for long-term success in the UAE.',
     'Established in 2015, Vision Business Setup has grown into a trusted name in the UAE’s business setup landscape. Over the years, we have had the privilege of working with high-value clients, entrepreneurs, and well-connected business networks across the region—delivering solutions that are not only efficient, but also strategically aligned with long-term success.',
@@ -162,11 +174,11 @@ export const whoWeWorkWith = {
   intro:
     'Our diverse client base spans multiple industries, reflecting our ability to adapt, understand, and deliver across different business environments. We have successfully supported:',
   items: [
-    { title: 'Real Estate & Property Development', image: 'portfolio-01.jpg' },
-    { title: 'Food & Beverage', image: 'portfolio-02.jpg' },
-    { title: 'Trading & General Commerce', image: 'portfolio-03.jpg' },
-    { title: 'Salons & Lifestyle Brands', image: 'portfolio-04.jpg' },
-    { title: 'Manpower & Workforce Supply', image: 'portfolio-05.jpg' },
+    { title: 'Real Estate & Property Development', image: 'who-we-work-with-1-clean.avif' },
+    { title: 'Food & Beverage', image: 'who-we-work-with-2-clean.avif' },
+    { title: 'Trading & General Commerce', image: 'who-we-work-with-3-clean.avif' },
+    { title: 'Salons & Lifestyle Brands', image: 'who-we-work-with-4-clean.avif' },
+    { title: 'Manpower & Workforce Supply', image: 'who-we-work-with-5-clean.avif' },
   ],
 }
 
@@ -213,7 +225,7 @@ export const commitment = {
   text: 'At Vision Business Setup, we don’t just help you start a business—we partner with you throughout your journey. From initial setup to ongoing support, our focus remains on delivering value, building trust, and ensuring your business operates with confidence in the UAE.',
   cta: 'Request a Callback',
   ctaHref: '#request-callback',
-  image: 'img-callback.png',
+  image: 'our-commitment-clean.avif',
   closing: {
     tagline: 'Every Business starts with Vision.',
     lines: [

@@ -7,8 +7,8 @@
 .whoWork {
   position: relative;
   background-color: var(--c-white);
-  padding-top: 2em;
-  padding-bottom: var(--space-large);
+  padding-top: 1.25em;
+  padding-bottom: 2em;
   overflow: hidden;
 }
 

@@ -3,7 +3,7 @@ import useInView from '../../../hooks/useInView.js'
 import Icon from '../../ui/Icon.jsx'
 import './OurStory.css'
 
-import imgStory from '../../../assets/images/img-experience.png'
+import imgStory from '../../../assets/images/our-story.avif'
 
 const RADIUS = 54
 const CIRCUMFERENCE = 2 * Math.PI * RADIUS
@@ -43,20 +43,36 @@ export default function OurStory() {
 
   return (
     <section className="ourStory" id="our-story">
-      <span className="ourStory__decor" aria-hidden="true" />
+      <div className="ourStory__decor ourStory__decor--left" aria-hidden="true" />
+      <div className="ourStory__decor ourStory__decor--right" aria-hidden="true" />
 
       <div className="ourStory__cell">
         <div className="ourStory__grid">
+          {/* Left Column: Visual Media Presentation */}
           <div className="ourStory__media">
-            <img
-              src={imgStory}
-              alt="The Vision Business Setup consulting team"
-              width="1237"
-              height="1469"
-              loading="lazy"
-            />
+            <div className="ourStory__mediaCard">
+              <div className="ourStory__mediaShape">
+                <img
+                  src={imgStory}
+                  alt="The Vision Business Setup consulting team"
+                  className="ourStory__image"
+                  loading="lazy"
+                />
+                <div className="ourStory__overlayGradient" aria-hidden="true" />
+                <div className="ourStory__imageTag">
+                  <span className="ourStory__tagDot" />
+                  <span>Trusted Business Advisors</span>
+                </div>
+              </div>
+              
+              <div className="ourStory__statFloating">
+                <span className="ourStory__statNum">10+</span>
+                <span className="ourStory__statLabel">Years of Excellence in UAE Formation</span>
+              </div>
+            </div>
           </div>
 
+          {/* Right Column: Editorial & Value Proposition */}
           <div className="ourStory__content">
             <header className="storyHeadline">
               <span className="storyHeadline__super">{eyebrow}</span>
@@ -66,22 +82,54 @@ export default function OurStory() {
               </h2>
             </header>
 
-            <div className="storyText">
-              {paragraphs.map((p) => (
-                <p key={p.slice(0, 24)}>{p}</p>
-              ))}
+            <p className="storyLead">{paragraphs[0]}</p>
+
+            <div className="storyHighlights">
+              <div className="storyHighlight">
+                <div className="storyHighlight__icon">
+                  <Icon name="compass" />
+                </div>
+                <div className="storyHighlight__text">
+                  <h4>Strategic Guidance</h4>
+                  <p>Advisory that aligns jurisdiction, banking, and structure with your long-term goals.</p>
+                </div>
+              </div>
+
+              <div className="storyHighlight">
+                <div className="storyHighlight__icon">
+                  <Icon name="handshake" />
+                </div>
+                <div className="storyHighlight__text">
+                  <h4>Client-First Focus</h4>
+                  <p>Dedicated consultant support from initial idea to operational launch and beyond.</p>
+                </div>
+              </div>
             </div>
 
-            <ul className="storyFeatures" ref={featuresRef}>
-              {features.map((f) => (
-                <li className="storyFeature" key={f.title}>
+            <div className="storyActions">
+              <a href="#request-callback" className="storyBtn storyBtn--primary">
+                <span>Request Consultation</span>
+              </a>
+              <a href="#business-setup" className="storyBtn storyBtn--secondary">
+                <span>Explore Jurisdictions</span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        {/* Feature Medallions Strip */}
+        <div className="ourStory__featuresStrip" ref={featuresRef}>
+          <ul className="storyFeatures">
+            {features.map((f) => (
+              <li className="storyFeature" key={f.title}>
+                <div className="storyFeature__inner">
                   <Ring icon={f.icon} active={featuresInView} />
                   <h3 className="storyFeature__title">{f.title}</h3>
                   <p className="storyFeature__text">{f.text}</p>
-                </li>
-              ))}
-            </ul>
-          </div>
+                </div>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

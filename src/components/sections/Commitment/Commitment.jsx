@@ -1,7 +1,7 @@
 import { commitment } from '../../../data/home.js'
 import './Commitment.css'
 
-import imgCommitment from '../../../assets/images/img-callback.png'
+import imgCommitment from '../../../assets/images/our-commitment-clean.avif'
 
 /**
  * Section 7 — Our Approach / Commitment.
@@ -43,13 +43,14 @@ export default function Commitment() {
           </div>
 
           <div className="commitment__media">
-            <img
-              src={imgCommitment}
-              alt="A Vision Business Setup consultant advising a client"
-              width="1237"
-              height="1469"
-              loading="lazy"
-            />
+            <div className="commitment__imageWrapper">
+              <img
+                src={imgCommitment}
+                alt="A Vision Business Setup consultant advising a client"
+                className="commitment__image"
+                loading="lazy"
+              />
+            </div>
           </div>
         </div>
       </div>

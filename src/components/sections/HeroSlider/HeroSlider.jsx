@@ -2,14 +2,16 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { heroSlides } from '../../../data/home.js'
 import './HeroSlider.css'
 
-import imgSlider01 from '../../../assets/images/img-slider-01.jpg'
-import imgSlider02 from '../../../assets/images/img-slider-02.jpg'
-import imgSlider03 from '../../../assets/images/img-slider-03.jpg'
+import banner01 from '../../../assets/images/banner-1.avif'
+import banner02 from '../../../assets/images/banner-2.avif'
+import banner03 from '../../../assets/images/banner-3.avif'
+import banner04 from '../../../assets/images/banner-4.avif'
 
 const IMAGES = {
-  'img-slider-01.jpg': imgSlider01,
-  'img-slider-02.jpg': imgSlider02,
-  'img-slider-03.jpg': imgSlider03,
+  'banner-1.avif': banner01,
+  'banner-2.avif': banner02,
+  'banner-3.avif': banner03,
+  'banner-4.avif': banner04,
 }
 
 const AUTOPLAY_MS = 5500

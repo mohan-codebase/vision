@@ -8,8 +8,8 @@
   position: relative;
   z-index: 2;
   background-color: var(--c-white);
-  padding-top: var(--space-medium);
-  padding-bottom: var(--space-large);
+  padding-top: 2.5em;
+  padding-bottom: 1.5em;
 }
 
 .businessSetup__cell {

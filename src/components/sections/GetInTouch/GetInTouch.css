@@ -8,7 +8,7 @@
 .getInTouch {
   position: relative;
   background-color: var(--c-white);
-  padding-bottom: var(--space-large);
+  padding-bottom: 2.5em;
 }
 
 /* --- Map ----------------------------------------------------------------- */
