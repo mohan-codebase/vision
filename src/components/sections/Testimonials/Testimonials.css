@@ -1,0 +1,198 @@
+/* ==========================================================================
+   Section — "Trusted by some Biggest Names" (testimonials)
+   Avantage brand-blue band (`--c-brand-blue` + `bgn-quotes` texture) with white diagonal
+   coverage shapes on the top and bottom edges. Static three-up testimonial
+   cards; columns stack on smaller screens.
+   ========================================================================== */
+
+.testimonials {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--c-brand-blue);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  color: var(--c-on-dark-strong);
+  padding: 6em 0 5.5em;
+}
+
+.testimonials__coverage {
+  position: absolute;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: auto;
+  z-index: 2;
+  pointer-events: none;
+  user-select: none;
+}
+
+.testimonials__coverage--top { top: -1px; }
+.testimonials__coverage--bottom { bottom: -1px; }
+
+.testimonials__cell {
+  position: relative;
+  z-index: 1;
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+/* --- Headline -------------------------------------------------------- */
+
+.tHeadline {
+  max-width: 620px;
+  margin-bottom: 3em;
+}
+
+.tHeadline__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+  margin-bottom: 0.9em;
+}
+
+.tHeadline__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+  color: var(--c-on-dark-strong);
+}
+
+.tHeadline__title::before {
+  content: '';
+  display: block;
+  width: 2.1875rem;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.tHeadline__plain { font-weight: var(--fw-light); }
+.tHeadline__accent { font-weight: var(--fw-bold); color: var(--c-accent); }
+
+/* --- Cards ---------------------------------------------------------- */
+
+.tGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.tCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 0.6em;
+}
+
+.tCard__avatar {
+  width: 200px;
+  max-width: 60%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 30px;
+}
+
+.tCard__avatar img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--t-base), opacity var(--t-base);
+}
+
+.tCard__avatar:hover img {
+  transform: scale(1.05);
+  opacity: 0.92;
+}
+
+.tCard__title {
+  margin-top: 1.1em;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  color: var(--c-on-dark-strong);
+}
+
+.tCard__quote {
+  margin-top: 0.9em;
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.tCard__rating {
+  display: inline-flex;
+  gap: 0.15em;
+  margin-top: 1.1em;
+  color: var(--c-accent);
+}
+
+.tCard__star {
+  display: inline-flex;
+}
+
+.tCard__star .btIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.tCard__name {
+  margin-top: 1.1em;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.tCard__company {
+  margin-top: 0.35em;
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  color: var(--c-on-dark-strong);
+}
+
+/* --- Responsive --------------------------------------------------- */
+
+@media (max-width: 992px) {
+  .testimonials { padding: 5em 0 4.5em; }
+  .tHeadline__title { font-size: 2.4rem; }
+  .tGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2.5em 20px;
+    max-width: 620px;
+  }
+  .tGrid .tCard:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 620px) {
+  .testimonials { padding: 4em 0 3.5em; }
+  .tHeadline { margin-bottom: 2.25em; }
+  .tHeadline__title { font-size: 2rem; }
+  .tGrid {
+    grid-template-columns: 1fr;
+    gap: 3em;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .tGrid .tCard:last-child { grid-column: auto; }
+  .tCard__avatar { max-width: 180px; }
+}

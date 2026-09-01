@@ -119,8 +119,8 @@
 
 .logo img.btMainLogo {
   display: block;
-  height: 48px;
-  max-height: 48px;
+  height: 58px;
+  max-height: 58px;
   width: auto;
   transition: height var(--t-base);
 }
@@ -394,7 +394,7 @@
    -------------------------------------------------------------------------- */
 
 .mainHeader.btStickyHeaderActive .logo img.btMainLogo {
-  height: 38px;
+  height: 46px;
 }
 
 .mainHeader.btStickyHeaderActive .menuPort .topBarInMenu {
@@ -470,9 +470,23 @@
   transform: translateX(0);
 }
 
+.btMobileHead {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.btMobileLogo {
+  display: block;
+  width: 132px;
+  height: auto;
+}
+
 .btMobileClose {
   display: block;
-  margin: 0 1.5rem 1rem auto;
   color: var(--c-dark);
 }
 
@@ -613,11 +627,11 @@
 
 @media (max-width: 620px) {
   :root {
-    --header-row: 60px;
+    --header-row: 64px;
   }
 
   .logo img.btMainLogo {
-    height: 38px;
+    height: 44px;
   }
 
   /* keep the phone button, drop the secondary tools */

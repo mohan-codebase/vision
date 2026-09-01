@@ -1,7 +1,8 @@
 import Icon from '../../ui/Icon.jsx'
 import { headerPhone, mainMenu, currentMenuIndex } from '../../../data/site.js'
 import MenuItem from './MenuItem.jsx'
-import logo from '../../../assets/logo.svg'
+
+const logo = `${import.meta.env.BASE_URL}logo-lockup.png`
 
 /**
  * MainNav — the white logo area (`.btLogoArea`).

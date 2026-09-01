@@ -12,7 +12,7 @@
   position: relative;
   width: 100%;
   overflow: hidden;
-  background-color: #191919;
+  background-color: var(--c-navy-deep);
 }
 
 /* All slides share one grid cell → the section is as tall as the tallest
@@ -60,7 +60,9 @@
   display: flex;
   flex-flow: row wrap;
   margin: 0 -20px;
-  min-height: clamp(580px, 80vh, 700px);
+  /* Full viewport height minus the fixed header (topbar + logo row ≈ --header-row + 32px). */
+  min-height: calc(100vh - var(--header-row) - 32px);
+  min-height: calc(100svh - var(--header-row) - 32px);
   align-items: center;
 }
 
@@ -100,7 +102,7 @@
 /* --- Headline — `bt_bb_headline.bt_bb_size_huge` -------------------------- */
 
 .heroHeadline {
-  color: #191919;
+  color: var(--c-dark);
 }
 
 /* Eyebrow with the accent dash — `bt_bb_dash_top` + `bt_bb_size_huge` */
@@ -131,7 +133,7 @@
   font-family: var(--font-heading);
   font-size: clamp(2.4rem, 3.6vw, 3.5rem);
   line-height: 1.12;
-  color: #191919;
+  color: var(--c-dark);
   letter-spacing: -0.01em;
 }
 
@@ -223,7 +225,7 @@
   content: '';
   width: 2px;
   height: 100%;
-  background-color: #191919;
+  background-color: var(--c-dark);
   opacity: 0.2;
   transform: scaleY(0.8);
   transition: 200ms ease all;
@@ -264,8 +266,15 @@
 
 @media (max-width: 1200px) {
   .heroHeadline__title { font-size: 3.5rem; }
-  .heroSlide__row { min-height: 620px; }
   .heroSlide__col { padding: 3.5em 20px; }
+}
+
+/* Topbar is hidden below 782px → subtract only the logo row, not the +32px. */
+@media (max-width: 782px) {
+  .heroSlide__row {
+    min-height: calc(100vh - var(--header-row));
+    min-height: calc(100svh - var(--header-row));
+  }
 }
 
 @media (max-width: 992px) {
@@ -282,7 +291,6 @@
   .heroSlide__col--media { display: none; }
   .heroSlide--right .heroSlide__col--text { order: 0; }
   .heroHeadline__title { font-size: 2.75rem; }
-  .heroSlide__row { min-height: 520px; }
   .heroDots { right: 1em; }
 }
 

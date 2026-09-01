@@ -1,20 +1,20 @@
 /* ==========================================================================
    Footer — theme dark skin (`btDarkSkin`)
      · widget band `#191919`, 4 columns (brand + 3 link lists)
-     · accent (#e94d65) bottom bar — copyright + footer menu + back-to-top
+     · accent (brand gold) bottom bar — copyright + footer menu + back-to-top
    ========================================================================== */
 
 .siteFooter {
   font-size: 0.875rem;
   line-height: 1.7;
-  background-color: #191919;
+  background-color: var(--c-navy-deep);
 }
 
 /* --- Widgets band --------------------------------------------------- */
 
 .siteFooterWidgets {
   position: relative;
-  background-color: #191919;
+  background-color: var(--c-navy-deep);
   color: rgba(255, 255, 255, 0.7);
   padding-top: 4.5em;
   overflow: hidden;
@@ -90,6 +90,18 @@
   line-height: 1.2;
   color: var(--c-white);
   margin-bottom: 0.7em;
+}
+
+.ftBrandLogo {
+  display: block;
+  width: 168px;
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 1.5em;
+  padding: 16px 20px;
+  background: var(--c-white);
+  border-radius: 10px;
+  box-sizing: content-box;
 }
 
 .ftWidget__text {
@@ -254,7 +266,7 @@
   margin-top: -1px;
   width: 10px;
   height: 2px;
-  background: #181818;
+  background: var(--c-navy-deep);
   transform: scaleX(0);
   transform-origin: 0 0;
   transition: transform 200ms ease;

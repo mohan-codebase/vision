@@ -3,6 +3,8 @@ import Icon from '../../ui/Icon.jsx'
 import { headerPhone, mainMenu, topBar, currentMenuIndex } from '../../../data/site.js'
 import MenuItem from './MenuItem.jsx'
 
+const logo = `${import.meta.env.BASE_URL}logo-lockup.png`
+
 /**
  * MobileMenu — off-canvas panel behind the hamburger.
  *
@@ -37,9 +39,12 @@ export default function MobileMenu({ open, onClose }) {
         aria-hidden={!open}
         inert={!open}
       >
-        <button type="button" className="btMobileClose" aria-label="Close menu" onClick={onClose}>
-          <Icon name="close" size="large" />
-        </button>
+        <div className="btMobileHead">
+          <img className="btMobileLogo" src={logo} alt="Vision Business Setup" width="132" height="87" />
+          <button type="button" className="btMobileClose" aria-label="Close menu" onClick={onClose}>
+            <Icon name="close" size="large" />
+          </button>
+        </div>
 
         <nav aria-label="Primary (mobile)">
           <ul className="menu">

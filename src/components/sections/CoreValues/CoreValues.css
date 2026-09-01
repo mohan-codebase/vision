@@ -1,13 +1,13 @@
 /* ==========================================================================
    Section 9 — Our Core Values
-   Avantage dark-teal band (#215876 + texture) with white diagonal coverage on
+   Avantage brand-blue band (`--c-brand-blue` + texture) with white diagonal coverage on
    the top and bottom edges. Seven icon cards.
    ========================================================================== */
 
 .coreValues {
   position: relative;
   overflow: hidden;
-  background-color: #215876;
+  background-color: var(--c-brand-blue);
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
