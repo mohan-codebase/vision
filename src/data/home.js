@@ -131,6 +131,48 @@ export const ourStory = {
   ],
 }
 
+/* 5b — TRUSTED BY SOME BIGGEST NAMES (testimonials) -------------------- */
+
+/*
+ * Recreated 1:1 from the Avantage Business reference section
+ * ("Trusted by some Biggest Names"). Quote copy, names, companies, ratings
+ * and the avatar images are the theme's originals, kept verbatim.
+ */
+export const testimonials = {
+  super: 'GREAT REVIEWS FOR OUR SERVICES',
+  title: 'Trusted by some',
+  accent: 'Biggest Names',
+  items: [
+    {
+      image: 'img-quote-01.jpg',
+      title: 'Absolutely spot-on!',
+      quote:
+        'Seamlessly visualize quality intellectual capital without superior collaboration and idea-sharing. Holistically pontificate installed base portals.',
+      name: 'James Brisk',
+      company: 'HSBC Bank',
+      rating: 5,
+    },
+    {
+      image: 'img-quote-02.jpg',
+      title: 'Best decision ever',
+      quote:
+        'Quickly deploy strategic networks with compelling e-business. Credibly pontificate highly efficient manufactured products and enabled data.',
+      name: 'Howard McMillan',
+      company: 'Hotel Berg',
+      rating: 5,
+    },
+    {
+      image: 'img-quote-03.jpg',
+      title: 'Saved my Business',
+      quote:
+        'Dynamically target high-payoff intellectual capital for customized technologies. Objectively integrate emerging core competency communities.',
+      name: 'Maria Gothenburg',
+      company: 'Applauz Startup',
+      rating: 5,
+    },
+  ],
+}
+
 /* 4 — WHAT SETS US APART ----------------------------------------------- */
 
 export const whatSetsUsApart = {

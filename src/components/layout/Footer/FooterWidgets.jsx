@@ -1,6 +1,8 @@
 import { footer } from '../../../data/site.js'
 import Icon from '../../ui/Icon.jsx'
 
+const logo = `${import.meta.env.BASE_URL}logo.png`
+
 /**
  * FooterWidgets — dark (`#191919`) widget band.
  *
@@ -19,8 +21,8 @@ export default function FooterWidgets() {
       <div className="siteFooterWidgets__port">
         <div className="siteFooterWidgets__row">
           <section className="ftBox ftBox--about">
+            <img className="ftBrandLogo" src={logo} alt={about.title} width="180" height="178" />
             <span className="ftWidget__super">{about.tagline}</span>
-            <h4 className="ftWidget__title">{about.title}</h4>
             <p className="ftWidget__text">{about.text}</p>
 
             <ul className="ftContact">

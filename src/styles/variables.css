@@ -4,22 +4,25 @@
    ========================================================================== */
 
 :root {
-  /* --- Brand colors ------------------------------------------------------ */
-  --c-accent:            #e94d65;  /* main / primary  (223 uses in theme.css) */
-  --c-accent-dark:       #d01a36;
-  --c-accent-alt:        #e21c2d;
-  --c-secondary:         #1b4962;  /* headline navy — default headline color */
-  --c-dark:              #181818;  /* base font color */
-  --c-dark-alt:          #191919;  /* dark scheme background */
+  /* --- Brand colors — Vision Business Setup logo ------------------------- */
+  --c-accent:            #b0842f;  /* main / primary — brand gold ("BUSINESS SETUP") */
+  --c-accent-dark:       #8a6626;  /* bronze — hover / pressed */
+  --c-accent-alt:        #c9a24e;
+  --c-accent-light:      #e4c877;  /* gold highlight (logo "V" tip / gradients) */
+  --c-secondary:         #1c3c60;  /* headline navy — the "VISION" wordmark */
+  --c-navy-deep:         #111826;  /* near-black navy — logo "VIS" letters */
+  --c-brand-blue:        #1c3f6b;  /* blue in the "V" gradient — feature bands */
+  --c-dark:              #121826;  /* base font color — deep navy */
+  --c-dark-alt:          #161c2b;  /* dark scheme background */
 
   /* --- Neutrals ---------------------------------------------------------- */
   --c-white:             #ffffff;
-  --c-body:              rgba(24, 24, 24, 0.8);
-  --c-muted:             rgba(24, 24, 24, 0.5);
-  --c-border:            rgba(24, 24, 24, 0.15);
-  --c-border-soft:       rgba(24, 24, 24, 0.1);
+  --c-body:              rgba(18, 24, 38, 0.8);
+  --c-muted:             rgba(18, 24, 38, 0.5);
+  --c-border:            rgba(18, 24, 38, 0.15);
+  --c-border-soft:       rgba(18, 24, 38, 0.1);
   --c-bg:                #ffffff;
-  --c-bg-sub:            rgba(24, 24, 24, 0.05);
+  --c-bg-sub:            rgba(18, 24, 38, 0.05);
 
   /* On dark color scheme (bt_bb_color_scheme_1) */
   --c-on-dark:           rgba(255, 255, 255, 0.8);

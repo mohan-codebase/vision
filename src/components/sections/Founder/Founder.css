@@ -32,7 +32,7 @@
   padding: 3em 2.5em;
   color: var(--c-white);
   background:
-    linear-gradient(150deg, #1b4962 0%, #14384c 100%);
+    linear-gradient(150deg, var(--c-secondary) 0%, var(--c-navy-deep) 100%);
   position: relative;
   overflow: hidden;
 }

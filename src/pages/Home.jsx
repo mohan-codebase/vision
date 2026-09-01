@@ -3,6 +3,7 @@ import BusinessSetup from '../components/sections/BusinessSetup/BusinessSetup.js
 import OurStory from '../components/sections/OurStory/OurStory.jsx'
 import WhatSetsUsApart from '../components/sections/WhatSetsUsApart/WhatSetsUsApart.jsx'
 import WhoWeWorkWith from '../components/sections/WhoWeWorkWith/WhoWeWorkWith.jsx'
+import Testimonials from '../components/sections/Testimonials/Testimonials.jsx'
 import OurServices from '../components/sections/OurServices/OurServices.jsx'
 import Commitment from '../components/sections/Commitment/Commitment.jsx'
 import Founder from '../components/sections/Founder/Founder.jsx'
@@ -20,6 +21,7 @@ export default function Home() {
       <OurStory />         {/* 3  Why Vision / Our Story (est. 2015)        */}
       <WhatSetsUsApart />  {/* 4  four differentiators                      */}
       <WhoWeWorkWith />    {/* 5  five industries                          */}
+      <Testimonials />     {/* 5b Trusted by some Biggest Names            */}
       <OurServices />      {/* 6  Licence / Visa / Finance / Other          */}
       <Commitment />       {/* 7  Our Approach / Commitment                 */}
       <Founder />          {/* 8  Viekram Sadwani                          */}

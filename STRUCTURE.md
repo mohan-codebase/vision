@@ -12,12 +12,16 @@ co-located `.css`. Content lives in `src/data/`, never inline in JSX.
 
 `src/styles/variables.css` — extracted from the Avantage theme and kept.
 
+Palette is derived from the **Vision Business Setup logo** (`public/logo.png`):
+deep navy wordmark, brand-gold "BUSINESS SETUP", blue "V" gradient.
+
 | Token | Value |
 |---|---|
-| Accent | `#e94d65` |
-| Secondary (navy) | `#1b4962` |
-| Dark section | `#191919` |
-| Teal band | `#215876` |
+| Accent (brand gold) | `#b0842f` (light `#e4c877`, dark `#8a6626`) |
+| Secondary (navy) | `#1c3c60` |
+| Navy deep (near-black) | `#111826` |
+| Brand blue / feature bands | `#1c3f6b` |
+| Dark section | `#161c2b` |
 | Body font | Sarabun · Headings | Roboto Condensed · Eyebrows/sub | Roboto |
 | Boxed widths | 1200 / 1400px, `max-width: calc(100% - 60px)` |
 | Spacing scale | 2em / 5em / 8.75em (normal / medium / large) |
