@@ -1,127 +1,115 @@
 /**
- * Site-wide chrome: header top bar, navigation, footer.
- * Content is transcribed from the reference layout so the clone has the
- * same text metrics (line counts / wrap points) as the original.
+ * Site-wide chrome for Vision Business Setup: header top bar, primary
+ * navigation and footer content.
+ *
+ * Contact details (phone, WhatsApp, email, address) live in
+ * `src/config/contact.js` — that is the single place to edit them.
  */
+import { contact } from '../config/contact.js'
+
+export const brand = {
+  name: 'Vision Business Setup',
+  tagline: 'Every Business starts with Vision',
+}
 
 export const topBar = {
-  hours: { icon: 'clock', title: 'Monday - Friday', text: '8AM - 9PM' },
-  offices: { icon: 'pin', title: 'Offices', text: 'Bloomsbury Square, London WC1B 4EA' },
-  social: {
-    title: 'Visit our social pages',
-    links: [
-      { icon: 'facebook', href: '#' },
-      { icon: 'twitter', href: '#' },
-      { icon: 'pinterest', href: '#' },
-      { icon: 'linkedin', href: '#' },
-    ],
-  },
-  phone: '020 7946 0020',
+  tagline: brand.tagline,
+  hours: { icon: 'clock', title: brand.tagline },
+  phone: { icon: 'phone', title: 'Speak to a consultant', text: contact.phoneDisplay, href: contact.phoneHref },
+  social: contact.social,
 }
 
 /**
- * Primary menu — the real 3-level tree from the reference site.
- * Home/About us/Services are 2 levels; Cases/Blog/Shop have a third-level
- * flyout. No item uses the theme's wide/mega dropdown on this demo.
+ * Primary menu — the Vision homepage navigation.
+ * `m(label, href, children)` builds one node; the menu renders up to three
+ * levels (top item → dropdown → flyout).
  */
-const m = (label, children) => ({ label, href: '#', ...(children && { children }) })
+const m = (label, href = '#', children) => ({ label, href, ...(children && { children }) })
 
 export const mainMenu = [
-  m('Home', [
-    m('Business Consultant'), m('Marketing Consultant'), m('HR Consultant'),
-    m('Financial Consultant'), m('Accountant / Tax Consultant'),
-    m('Strategy Consultant'), m('Management Consultant'),
-    m('International Consultant'),
+  m('Business Setup', '#business-setup', [
+    m('UAE Mainland', '#business-setup'),
+    m('UAE Free Zone', '#business-setup'),
+    m('UAE Offshore', '#business-setup'),
   ]),
-  m('About us', [
-    m('About us'), m('About me'), m('Team'), m('Company History'),
-    m('Testimonials'), m('Clients'), m('Careers'), m('Contact'),
-    m('Location'), m('Under construction'), m('404'),
-  ]),
-  m('Services', [
-    m('Single service'), m('Our Process'), m('Solutions'),
-    m('Cost Calculator'), m('FAQ'), m('Pricing'),
-  ]),
-  m('Cases', [
-    m('Case list', [m('Classic'), m('Columns')]),
-    m('Case grid', [m('Three columns'), m('Four columns'), m('Five columns'), m('Six columns')]),
-    m('Case tiles', [m('Three columns'), m('Four columns'), m('Five columns'), m('Six columns')]),
-    m('Single case', [
-      m('Standard'), m('Grid gallery'), m('Carousel gallery'), m('Columns view'),
-      m('Video case'), m('Audio case'), m('Without default title'),
-      m('With Bold Builder content'),
+  m('Our Services', '#services', [
+    m('Licence', '#services', [
+      m('License Renewal', '#services'),
+      m('License Modification', '#services'),
+      m('License Cancellation', '#services'),
+      m('License Freezing', '#services'),
+    ]),
+    m('Visa', '#services', [
+      m('Residence Visa', '#services'),
+      m('Dependent Visa', '#services'),
+      m('Remote Work Visa', '#services'),
+      m('Golden Visa', '#services'),
+      m('Freelance Visa', '#services'),
+      m('Domestic Worker Visa', '#services'),
+    ]),
+    m('Finance & Banking', '#services', [
+      m('Bank Account Opening', '#services'),
+      m('Corporate Tax Guide', '#services'),
+      m('Bookkeeping & VAT Registration', '#services'),
+    ]),
+    m('Other', '#services', [
+      m('VIP Medical & Emirates ID Assistance', '#services'),
+      m('Customs Registration', '#services'),
+      m('Office Spaces', '#services'),
     ]),
   ]),
-  m('Blog', [
-    m('Blog list', [
-      m('Classic'), m('Classic with Avatar'), m('Columns'),
-      m('Columns without sidebar'), m('Simple'), m('Simple with avatar'),
-    ]),
-    m('Blog grid', [m('Three columns'), m('Four columns'), m('Five columns'), m('Six columns')]),
-    m('Blog tiles', [m('Three columns'), m('Four columns'), m('Five columns'), m('Six columns')]),
-    m('Latest posts', [m('Three columns'), m('Four columns'), m('Six columns')]),
-    m('Single post', [
-      m('Standard post'), m('Image post'), m('Grid gallery post'),
-      m('Carousel gallery post'), m('Columns view'), m('Video post'),
-      m('Audio post'), m('Link post'), m('Quote post'),
-    ]),
-  ]),
-  m('Shop', [
-    m('Products', [
-      m('Classic'), m('Two columns'), m('Four columns'), m('Five columns'),
-      m('Six columns'), m('Product categories'),
-    ]),
-    m('Single product', [
-      m('Standard product'), m('Discounted product'), m('Variable product'),
-      m('Grouped product'), m('External product'),
-    ]),
-    m('Shop pages', [m('Cart'), m('Checkout'), m('My Account')]),
-  ]),
+  m('Contact Us', '#request-callback'),
 ]
 
-/** Index of the item rendered as current (Home). */
-export const currentMenuIndex = 0
+/** Index of the item rendered as current. -1 = none (home has no nav match). */
+export const currentMenuIndex = -1
 
-/** The header's accent button is the phone number, not a generic CTA. */
-export const headerPhone = { label: '020 7946 0020', href: 'tel:02079460020' }
+/** The header's accent button is the phone number. */
+export const headerPhone = { label: contact.phoneDisplay, href: contact.phoneHref }
 
-export const footerWidgets = {
-  headquarters: {
-    super: 'AVANTAGE',
-    title: 'Headquarters',
-    text: 'Organically grow the holistic world view of disruptive innovation via empowerment.',
-    links: [
-      { icon: 'phone', label: '020 7946 0020', href: 'tel:02079460020' },
-      { icon: 'mail', label: 'info@avantage.co.uk', href: 'mailto:info@avantage.co.uk' },
-      { icon: 'globe', label: 'avantage.co.uk', href: '#' },
-    ],
+export const footer = {
+  about: {
+    title: brand.name,
+    tagline: brand.tagline,
+    text: 'End-to-end business setup and corporate support services across UAE Mainland, Free Zone and Offshore jurisdictions — since 2015.',
   },
-  locations: {
-    super: 'OUR LOCATIONS',
-    title: 'Where to find us?',
-    image: 'img-footer-map.png',
-    offices: [
-      { city: 'London', phone: '020 7946 0020' },
-      { city: 'Ontario', phone: '613 285 5534' },
-      { city: 'Tokyo', phone: '0428 298 114' },
-    ],
-  },
-  social: {
-    super: 'GET IN TOUCH',
-    title: 'Avantage Social links',
-    text: 'Taking seamless key performance indicators offline to maximise the long tail.',
-    links: [
-      { icon: 'facebook', href: '#' },
-      { icon: 'twitter', href: '#' },
-      { icon: 'pinterest', href: '#' },
-      { icon: 'linkedin', href: '#' },
-    ],
-  },
+  columns: [
+    {
+      title: 'Business Setup',
+      links: [
+        { label: 'UAE Mainland', href: '#business-setup' },
+        { label: 'UAE Free Zone', href: '#business-setup' },
+        { label: 'UAE Offshore', href: '#business-setup' },
+      ],
+    },
+    {
+      title: 'Our Services',
+      links: [
+        { label: 'Licence', href: '#services' },
+        { label: 'Visa', href: '#services' },
+        { label: 'Finance & Banking', href: '#services' },
+        { label: 'Other Services', href: '#services' },
+      ],
+    },
+    {
+      title: 'Company',
+      links: [
+        { label: 'Our Story', href: '#our-story' },
+        { label: 'What Sets Us Apart', href: '#why-vision' },
+        { label: 'Our Founder', href: '#founder' },
+        { label: 'Core Values', href: '#values' },
+      ],
+    },
+  ],
+  contact,
 }
 
 export const footerBottom = {
-  copyright: 'Copyright by BoldThemes. All rights reserved.',
-  menu: ['Home', 'About Us', 'Services', 'Portfolio', 'Blog', 'Shop'].map(
-    (label) => ({ label, href: '#' }),
-  ),
+  copyright: `© ${new Date().getFullYear()} ${brand.name}. All rights reserved.`,
+  menu: [
+    { label: 'Business Setup', href: '#business-setup' },
+    { label: 'Our Services', href: '#services' },
+    { label: 'Our Story', href: '#our-story' },
+    { label: 'Contact Us', href: '#request-callback' },
+  ],
 }

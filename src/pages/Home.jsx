@@ -1,32 +1,32 @@
-import CallbackCounters from '../components/sections/CallbackCounters/CallbackCounters.jsx'
-import Cases from '../components/sections/Cases/Cases.jsx'
-import ClientLogos from '../components/sections/ClientLogos/ClientLogos.jsx'
-import ContactBar from '../components/sections/ContactBar/ContactBar.jsx'
-import Experience from '../components/sections/Experience/Experience.jsx'
 import HeroSlider from '../components/sections/HeroSlider/HeroSlider.jsx'
-import Industries from '../components/sections/Industries/Industries.jsx'
-import LatestNews from '../components/sections/LatestNews/LatestNews.jsx'
-import MapEmbed from '../components/sections/MapEmbed/MapEmbed.jsx'
-import QuoteBanner from '../components/sections/QuoteBanner/QuoteBanner.jsx'
-import ServicesIntro from '../components/sections/ServicesIntro/ServicesIntro.jsx'
-import Testimonials from '../components/sections/Testimonials/Testimonials.jsx'
+import BusinessSetup from '../components/sections/BusinessSetup/BusinessSetup.jsx'
+import OurStory from '../components/sections/OurStory/OurStory.jsx'
+import WhatSetsUsApart from '../components/sections/WhatSetsUsApart/WhatSetsUsApart.jsx'
+import WhoWeWorkWith from '../components/sections/WhoWeWorkWith/WhoWeWorkWith.jsx'
+import OurServices from '../components/sections/OurServices/OurServices.jsx'
+import Commitment from '../components/sections/Commitment/Commitment.jsx'
+import Founder from '../components/sections/Founder/Founder.jsx'
+import CoreValues from '../components/sections/CoreValues/CoreValues.jsx'
+import CtaBanner from '../components/sections/CtaBanner/CtaBanner.jsx'
+import CallbackForm from '../components/sections/CallbackForm/CallbackForm.jsx'
+import GetInTouch from '../components/sections/GetInTouch/GetInTouch.jsx'
 
-/** Homepage — sections in the exact order of the reference page. */
+/** Vision Business Setup — homepage sections, in order. */
 export default function Home() {
   return (
     <>
-      <HeroSlider />        {/* 1  hero carousel, dark, wide          */}
-      <ServicesIntro />     {/* 2  three intro columns                */}
-      <Industries />        {/* 3  Consultancy Industries             */}
-      <Experience />        {/* 4  30 Years of Experience             */}
-      <Testimonials />      {/* 5  Trusted by some Biggest Names      */}
-      <ClientLogos />       {/* 6  client logo carousel               */}
-      <CallbackCounters />  {/* 7  Right up There + counters          */}
-      <Cases />             {/* 8  Consultancy Cases                  */}
-      <QuoteBanner />       {/* 9  Searching for a First-Class...     */}
-      <LatestNews />        {/* 10 Latest News                        */}
-      <MapEmbed />          {/* 11 Google map                         */}
-      <ContactBar />        {/* 12 Get in Touch (12+13 merged)        */}
+      <HeroSlider />       {/* 1  hero: "Every Business starts with Vision" */}
+      <BusinessSetup />    {/* 2  Mainland / Free Zone / Offshore           */}
+      <OurStory />         {/* 3  Why Vision / Our Story (est. 2015)        */}
+      <WhatSetsUsApart />  {/* 4  four differentiators                      */}
+      <WhoWeWorkWith />    {/* 5  five industries                          */}
+      <OurServices />      {/* 6  Licence / Visa / Finance / Other          */}
+      <Commitment />       {/* 7  Our Approach / Commitment                 */}
+      <Founder />          {/* 8  Viekram Sadwani                          */}
+      <CoreValues />       {/* 9  seven core values                        */}
+      <CtaBanner />        {/* 10 strong CTA                               */}
+      <CallbackForm />     {/* 11 Request a Callback form                  */}
+      <GetInTouch />       {/* 12 Get in Touch — map + contact panel       */}
     </>
   )
 }

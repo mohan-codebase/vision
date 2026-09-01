@@ -56,8 +56,8 @@ export default function MobileMenu({ open, onClose }) {
           </a>
 
           <div className="btMobileSocial">
-            {topBar.social.links.map((link) => (
-              <a key={link.icon} href={link.href} aria-label={link.icon}>
+            {topBar.social.map((link) => (
+              <a key={link.icon} href={link.href} aria-label={link.label}>
                 <Icon name={link.icon} />
               </a>
             ))}

@@ -6,24 +6,21 @@ import imgSlider01 from '../../../assets/images/img-slider-01.jpg'
 import imgSlider02 from '../../../assets/images/img-slider-02.jpg'
 import imgSlider03 from '../../../assets/images/img-slider-03.jpg'
 
-/** Data keeps the filename; the bundler resolves the real URL here. */
 const IMAGES = {
   'img-slider-01.jpg': imgSlider01,
   'img-slider-02.jpg': imgSlider02,
   'img-slider-03.jpg': imgSlider03,
 }
 
-const AUTOPLAY_MS = 4500
+const AUTOPLAY_MS = 5500
 
 /**
  * Section 1 — Hero slider.
  *
- * Full-bleed, 3 fading slides. Reproduces the reference `bt_bb_content_slider`
- * (Slick with `fade: true`, `autoplay`, `arrows: false`, `dots: true`,
- * dots pinned to the right). No jQuery — a small fade carousel in React.
- *
- * Slides are stacked in one CSS grid cell so the section keeps a stable
- * height (the tallest slide) and the crossfade never makes the page jump.
+ * Full-bleed, 3 fading slides carrying the Vision Business Setup message
+ * ("Every Business starts with Vision"). No jQuery — a small fade carousel:
+ * slides are stacked in one CSS grid cell so the section keeps a stable
+ * height and the crossfade never makes the page jump.
  */
 export default function HeroSlider() {
   const [current, setCurrent] = useState(0)
@@ -33,13 +30,11 @@ export default function HeroSlider() {
   const goTo = useCallback((i) => setCurrent(((i % count) + count) % count), [count])
   const next = useCallback(() => setCurrent((c) => (c + 1) % count), [count])
 
-  // Autoplay. `pauseOnHover` is false on the reference, so it just keeps going.
   useEffect(() => {
     timer.current = window.setInterval(next, AUTOPLAY_MS)
     return () => window.clearInterval(timer.current)
   }, [next])
 
-  // A manual pick should restart the countdown, not fire straight after.
   const pick = useCallback(
     (i) => {
       window.clearInterval(timer.current)
@@ -50,14 +45,16 @@ export default function HeroSlider() {
   )
 
   return (
-    <section className="heroSlider" aria-roledescription="carousel" aria-label="Intro">
+    <section
+      className="heroSlider"
+      aria-roledescription="carousel"
+      aria-label="Vision Business Setup"
+    >
       <div className="heroSlider__viewport">
         {heroSlides.map((slide, i) => (
           <article
             key={slide.title}
-            className={`heroSlide heroSlide--${slide.side}${
-              i === current ? ' is-active' : ''
-            }`}
+            className={`heroSlide heroSlide--${slide.side}${i === current ? ' is-active' : ''}`}
             style={{ backgroundImage: `url(${IMAGES[slide.image]})` }}
             aria-hidden={i === current ? undefined : true}
             aria-roledescription="slide"
@@ -79,7 +76,7 @@ export default function HeroSlider() {
                     {slide.buttons.map((btn) => (
                       <a
                         key={btn.label}
-                        href="#"
+                        href={btn.href}
                         className={`heroButton heroButton--${btn.variant}`}
                         tabIndex={i === current ? 0 : -1}
                       >

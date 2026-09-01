@@ -3,37 +3,26 @@ import { topBar } from '../../../data/site.js'
 
 /**
  * TopBar — the navy (#1b4962) utility strip above the logo area.
- *
- * `btAlternateGradientHeader` overlays it with a left-to-right
- * transparent→black gradient at 15% opacity; that's the `::before` in
- * Header.css, which is why `.port` here is z-indexed above it.
+ * Left: the Vision tagline. Right: a "speak to a consultant" phone line and
+ * social links. Hidden once the header sticks (see Header.css).
  */
 export default function TopBar() {
   return (
     <div className="topBar">
       <div className="topBarPort port">
         <div className="topTools btTopToolsLeft">
-          <IconWidget
-            icon={topBar.hours.icon}
-            title={topBar.hours.title}
-            text={topBar.hours.text}
-          />
-          <IconWidget
-            icon={topBar.offices.icon}
-            title={topBar.offices.title}
-            text={topBar.offices.text}
-          />
+          <IconWidget icon={topBar.hours.icon} title={topBar.hours.title} />
         </div>
 
         <div className="topTools btTopToolsRight">
-          <IconWidget title={topBar.social.title} accent={false} />
-          {topBar.social.links.map((link) => (
-            <IconWidget
-              key={link.icon}
-              icon={link.icon}
-              href={link.href}
-              label={link.icon}
-            />
+          <IconWidget
+            icon={topBar.phone.icon}
+            title={`Call us: ${topBar.phone.text}`}
+            href={topBar.phone.href}
+            label="Call Vision Business Setup"
+          />
+          {topBar.social.map((link) => (
+            <IconWidget key={link.icon} icon={link.icon} href={link.href} label={link.label} />
           ))}
         </div>
       </div>

@@ -1,0 +1,322 @@
+/* ==========================================================================
+   Section 12 — Get in Touch
+   Avantage contact section: a full-width map with a wide horizontal white
+   panel overlapping its lower-middle. Panel left = label + heading +
+   description; panel right = three equal contact columns.
+   ========================================================================== */
+
+.getInTouch {
+  position: relative;
+  background-color: var(--c-white);
+  padding-bottom: var(--space-large);
+}
+
+/* --- Map ----------------------------------------------------------------- */
+
+.getInTouch__map {
+  position: relative;
+  width: 100%;
+  height: 600px;
+  overflow: hidden;
+  background-color: #e3e8ec;
+}
+
+.getInTouch__frame {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+/* Fallback when no map query is configured at all */
+.getInTouch__mapFallback {
+  position: absolute;
+  inset: 0;
+  background-color: #e3e8ec;
+  background-image:
+    linear-gradient(rgba(27, 73, 98, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(27, 73, 98, 0.06) 1px, transparent 1px);
+  background-size: 110px 110px, 110px 110px;
+}
+
+.getInTouch__mapPin {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  transform: translate(-50%, -100%) rotate(-45deg);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.25em;
+  height: 3.25em;
+  border-radius: 50% 50% 50% 0;
+  background: var(--c-accent);
+  color: var(--c-white);
+  box-shadow: 0 12px 24px rgba(233, 77, 101, 0.4);
+}
+
+.getInTouch__mapPin .btIcon {
+  transform: rotate(45deg);
+  width: 22px;
+  height: 22px;
+}
+
+/* --- Overlapping panel ------------------------------------------------- */
+
+.getInTouch__cell {
+  position: relative;
+  z-index: 2;
+  width: var(--w-content);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: -240px auto 0;
+}
+
+.giPanel {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  background: var(--c-white);
+  box-shadow: 0 40px 80px rgba(24, 24, 24, 0.22);
+  overflow: hidden;
+}
+
+/* Geometric nod — accent angled corner, top-left */
+.giPanel__corner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 74px 74px 0 0;
+  border-color: var(--c-accent) transparent transparent transparent;
+  z-index: 3;
+}
+
+/* Left: label + heading + description ---------------------------------- */
+
+.giPanel__intro {
+  flex: 0 0 38%;
+  max-width: 38%;
+  padding: 3.75em 3em;
+  background: var(--c-white);
+}
+
+.giPanel__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
+}
+
+.giPanel__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.giPanel__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.giPanel__titlePlain {
+  font-weight: var(--fw-light);
+  color: var(--c-secondary);
+}
+
+.giPanel__titleAccent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.giPanel__text {
+  margin-top: 1.2em;
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--c-body);
+}
+
+.giPanel__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em;
+  margin-top: 1.8em;
+}
+
+.giBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  padding: 0.9em 1.6em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  line-height: 1;
+  transition: background-color var(--t-base), color var(--t-base), box-shadow var(--t-base);
+}
+
+.giBtn--accent {
+  color: var(--c-white);
+  background-color: var(--c-accent);
+}
+
+.giBtn--accent:hover {
+  background-color: var(--c-white);
+  color: var(--c-accent);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+}
+
+.giBtn--wa {
+  color: var(--c-white);
+  background-color: #25d366;
+}
+
+.giBtn--wa:hover {
+  background-color: #1ebe5b;
+}
+
+/* Right: three equal contact columns --------------------------------- */
+
+.giCols {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: stretch;
+  list-style: none;
+  margin: 0;
+  background: #f7f8f9;
+}
+
+.giCol {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 3.75em 2em;
+  border-left: 1px solid var(--c-border-soft);
+}
+
+.giCol:first-child {
+  border-left: 0;
+}
+
+.giCol__icon {
+  display: inline-flex;
+  color: var(--c-accent);
+  margin-bottom: 0.9em;
+}
+
+.giCol__icon .btIcon {
+  width: 34px;
+  height: 34px;
+}
+
+.giCol__title {
+  font-family: var(--font-heading);
+  font-size: 1.375rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.2;
+  color: var(--c-secondary);
+  margin-bottom: 0.5em;
+}
+
+.giCol__lines p {
+  margin: 0 0 0.2em;
+  font-family: var(--font-base);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--c-body);
+}
+
+.giCol__lines a {
+  color: var(--c-body);
+  transition: color var(--t-base);
+}
+
+.giCol__lines a:hover {
+  color: var(--c-accent);
+}
+
+.giCol__placeholder {
+  font-style: italic;
+  color: var(--c-muted);
+}
+
+/* --- Open-in-maps link ---------------------------------------------- */
+
+.getInTouch__mapLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45em;
+  margin-top: 1.25em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.getInTouch__mapLink:hover {
+  color: var(--c-secondary);
+}
+
+/* --- Responsive --------------------------------------------------- */
+
+@media (max-width: 1200px) {
+  .giPanel__title { font-size: 2.6rem; }
+  .giPanel__intro { padding: 3em 2.4em; }
+  .giCol { padding: 3em 1.6em; }
+}
+
+@media (max-width: 1024px) {
+  .getInTouch__map { height: 480px; }
+  .getInTouch__cell { margin-top: -200px; }
+
+  .giPanel { flex-direction: column; }
+  .giPanel__intro { flex-basis: auto; max-width: none; }
+
+  .giCols { border-top: 1px solid var(--c-border-soft); }
+  .giPanel__title { font-size: 2.4rem; }
+}
+
+@media (max-width: 768px) {
+  .getInTouch { padding-bottom: var(--space-large-sm); }
+  .getInTouch__map { height: 380px; }
+  .getInTouch__cell { margin-top: -140px; }
+  .giPanel__intro { padding: 2.5em 1.75em; }
+  .giCol { padding: 2em 1.5em; }
+}
+
+@media (max-width: 600px) {
+  .getInTouch__map { height: 320px; }
+  .getInTouch__cell { margin-top: -110px; }
+
+  .giPanel__title { font-size: 2rem; }
+  .giPanel__corner { border-width: 56px 56px 0 0; }
+
+  .giCols { flex-direction: column; }
+  .giCol {
+    border-left: 0;
+    border-top: 1px solid var(--c-border-soft);
+  }
+  .giCol:first-child { border-top: 0; }
+
+  .giPanel__actions .giBtn {
+    flex: 1 1 100%;
+    justify-content: center;
+  }
+
+  .getInTouch__mapLink { width: 100%; justify-content: center; }
+}

@@ -1,5 +1,6 @@
 import Footer from './components/layout/Footer/Footer.jsx'
 import Header from './components/layout/Header/Header.jsx'
+import WhatsApp from './components/layout/WhatsApp/WhatsApp.jsx'
 import Home from './pages/Home.jsx'
 
 export default function App() {
@@ -14,6 +15,7 @@ export default function App() {
         </div>
         <Footer />
       </div>
+      <WhatsApp />
     </>
   )
 }

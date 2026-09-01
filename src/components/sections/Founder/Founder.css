@@ -1,0 +1,208 @@
+/* ==========================================================================
+   Section 8 — Our Founder
+   Two columns: a navy monogram card (portrait stand-in) and the founder story
+   with a compact facts strip. Light-grey band, geometric accents.
+   ========================================================================== */
+
+.founder {
+  background-color: #f5f5f5;
+  padding: var(--space-medium) 0;
+}
+
+.founder__cell {
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.founder__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 48px;
+}
+
+/* --- Monogram card ------------------------------------------------- */
+
+.founderCard {
+  flex: 0 0 38%;
+  max-width: 38%;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 3em 2.5em;
+  color: var(--c-white);
+  background:
+    linear-gradient(150deg, #1b4962 0%, #14384c 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.founderCard::after {
+  content: '';
+  position: absolute;
+  right: -60px;
+  bottom: -60px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 220px 220px;
+  border-color: transparent transparent rgba(233, 77, 101, 0.25) transparent;
+}
+
+.founderCard__monogram {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 2.5rem;
+  letter-spacing: 0.04em;
+  color: var(--c-white);
+  margin-bottom: 1.4em;
+}
+
+.founderCard figcaption {
+  display: block;
+}
+
+.founderCard__name {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.15;
+}
+
+.founderCard__role {
+  display: block;
+  margin-top: 0.35em;
+  font-family: var(--font-alt);
+  font-size: 0.875rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.founderCard__quote {
+  position: relative;
+  margin: 1.8em 0 0;
+  padding-top: 1.4em;
+  border-top: 1px solid rgba(255, 255, 255, 0.15);
+  font-family: var(--font-alt);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.founderCard__quoteMark {
+  display: block;
+  color: var(--c-accent);
+  margin-bottom: 0.4em;
+}
+
+.founderCard__quoteMark .btIcon {
+  width: 26px;
+  height: 26px;
+}
+
+/* --- Story ------------------------------------------------------- */
+
+.founder__content {
+  flex: 1 1 auto;
+  min-width: 0;
+  align-self: center;
+}
+
+.founder__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.8em;
+}
+
+.founder__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: var(--fw-light);
+  line-height: 1.15;
+  color: var(--c-secondary);
+  margin-bottom: 0.9em;
+}
+
+.founder__title strong {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.founder__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.founder__para {
+  font-family: var(--font-base);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--c-body);
+  margin-bottom: 1em;
+}
+
+.founderFacts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin-top: 1.8em;
+  list-style: none;
+}
+
+.founderFact {
+  flex: 1 1 150px;
+  padding: 1.1em 1.2em;
+  background: var(--c-white);
+  box-shadow: 0 2px 16px rgba(0, 0, 0, 0.06);
+  border-left: 3px solid var(--c-accent);
+}
+
+.founderFact__value {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-secondary);
+}
+
+.founderFact__label {
+  display: block;
+  margin-top: 0.25em;
+  font-family: var(--font-base);
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--c-body);
+}
+
+/* --- Responsive ----------------------------------------------- */
+
+@media (max-width: 960px) {
+  .founder__grid { flex-direction: column; gap: 2em; }
+  .founderCard { flex-basis: auto; max-width: none; }
+  .founder__title { font-size: 2.1rem; }
+}
+
+@media (max-width: 560px) {
+  .founderCard { padding: 2.25em 1.75em; }
+  .founder__title { font-size: 1.8rem; }
+  .founderFact { flex-basis: 100%; }
+}

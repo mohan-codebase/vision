@@ -1,0 +1,230 @@
+/* ==========================================================================
+   Section 2 — Business Setup Options (Mainland / Free Zone / Offshore)
+   Avantage "three overlapping cards": the row rides up over the hero, each
+   card has a faded photo background, a drop shadow and a text-indent inset.
+   ========================================================================== */
+
+.businessSetup {
+  position: relative;
+  z-index: 2;
+  background-color: var(--c-white);
+  padding-top: var(--space-medium);
+  padding-bottom: var(--space-large);
+}
+
+.businessSetup__cell {
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+/* --- Heading (sits on white, above the cards) --------------------------- */
+
+.bsHead {
+  position: relative;
+  z-index: 3;
+  max-width: 760px;
+  margin: 0 auto 3em;
+  text-align: center;
+}
+
+.bsHead__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
+}
+
+.bsHead__title {
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.bsHead__plain {
+  font-weight: var(--fw-light);
+  color: var(--c-secondary);
+}
+
+.bsHead__accent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.bsHead__intro {
+  margin-top: 1.2em;
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--c-body);
+}
+
+/* --- Cards ------------------------------------------------------------- */
+
+.businessSetup__row {
+  display: flex;
+  flex-flow: row wrap;
+  margin: 0 -10px;
+}
+
+.bsCard {
+  flex: 0 0 33.3333%;
+  max-width: 33.3333%;
+  padding: 0 10px;
+  margin-bottom: 20px;
+}
+
+.bsCard__content {
+  position: relative;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--c-white);
+  background-position: top center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+  padding: 3em 2em 2.5em;
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.bsCard__content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.72) 0%, #fff 40%);
+  pointer-events: none;
+}
+
+.bsCard__content > * {
+  position: relative;
+}
+
+.bsCard__content:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 36px rgba(0, 0, 0, 0.2);
+}
+
+.bsCard__icon {
+  display: inline-flex;
+  color: var(--c-accent);
+  margin-bottom: 1em;
+}
+
+.bsCard__icon .btIcon {
+  width: 52px;
+  height: 52px;
+}
+
+.bsCard__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.6em;
+}
+
+.bsCard__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  font-weight: var(--fw-light);
+  line-height: 1.2;
+  color: var(--c-secondary);
+  padding-bottom: 0.5em;
+}
+
+.bsCard__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+}
+
+.bsCard__text {
+  margin-top: 1em;
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--c-body);
+}
+
+.bsCard__benefits {
+  margin-top: 1.2em;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.55em;
+}
+
+.bsCard__benefits li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  font-family: var(--font-base);
+  font-size: 0.875rem;
+  font-weight: var(--fw-bold);
+  line-height: 1.4;
+  color: var(--c-secondary);
+}
+
+.bsCard__benefitIcon {
+  flex: none;
+  display: inline-flex;
+  color: var(--c-accent);
+  margin-top: 0.1em;
+}
+
+.bsCard__benefitIcon .btIcon {
+  width: 14px;
+  height: 14px;
+}
+
+.bsCard__cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  margin-top: auto;
+  padding-top: 1.5em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+  transition: gap var(--t-base), color var(--t-base);
+}
+
+.bsCard__cta:hover {
+  color: var(--c-secondary);
+  gap: 0.85em;
+}
+
+/* --- Responsive ------------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .bsHead__title { font-size: 2.25rem; }
+  .bsCard__content { padding: 2.5em 1.6em 2.25em; }
+}
+
+@media (max-width: 860px) {
+  .bsCard {
+    flex-basis: 100%;
+    max-width: 480px;
+    margin: 0 auto 20px;
+  }
+}
+
+@media (max-width: 560px) {
+  .bsHead__title { font-size: 1.9rem; }
+}

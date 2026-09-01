@@ -1,0 +1,186 @@
+/* ==========================================================================
+   Section 6 — Our Services
+   Four category cards on a light-grey band. Accent icon, navy title, a checked
+   list of the documented sub-services, and a closing accent button.
+   ========================================================================== */
+
+.ourServices {
+  background-color: #f5f5f5;
+  padding: var(--space-medium) 0;
+}
+
+.ourServices__cell {
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.svcHead {
+  max-width: 680px;
+  margin-bottom: 3.25em;
+}
+
+.svcHead__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
+}
+
+.svcHead__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.svcHead__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.svcHead__plain {
+  font-weight: var(--fw-light);
+  color: var(--c-secondary);
+}
+
+.svcHead__accent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.svcHead__intro {
+  margin-top: 1.2em;
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--c-body);
+}
+
+/* --- Cards ------------------------------------------------------------ */
+
+.svcGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+  list-style: none;
+}
+
+.svcCard {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--c-white);
+  padding: 2.25em 1.75em 2em;
+  box-shadow: 0 2px 18px rgba(0, 0, 0, 0.06);
+  transition: transform var(--t-base), box-shadow var(--t-base);
+}
+
+.svcCard:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+.svcCard__icon {
+  display: inline-flex;
+  color: var(--c-accent);
+  margin-bottom: 0.9em;
+}
+
+.svcCard__icon .btIcon {
+  width: 46px;
+  height: 46px;
+}
+
+.svcCard__title {
+  position: relative;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 1.375rem;
+  line-height: 1.2;
+  color: var(--c-secondary);
+  padding-bottom: 0.7em;
+  margin-bottom: 1em;
+}
+
+.svcCard__title::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+}
+
+.svcCard__list {
+  list-style: none;
+  margin: 0;
+}
+
+.svcCard__list li {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.6em;
+  padding: 0.4em 0;
+  font-family: var(--font-base);
+  font-size: 0.9375rem;
+  line-height: 1.45;
+  color: var(--c-body);
+}
+
+.svcCard__bullet {
+  flex: none;
+  width: 6px;
+  height: 6px;
+  margin-top: 0.55em;
+  background: var(--c-accent);
+  transform: rotate(45deg);
+}
+
+/* --- Foot ---------------------------------------------------------- */
+
+.ourServices__foot {
+  margin-top: 3em;
+  text-align: center;
+}
+
+.ourServices__button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1.1em 2.8em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.9375rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--c-white);
+  background-color: var(--c-accent);
+  transition: background-color var(--t-base), color var(--t-base), box-shadow var(--t-base);
+}
+
+.ourServices__button:hover {
+  background-color: var(--c-white);
+  color: var(--c-accent);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+}
+
+/* --- Responsive ------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .svcGrid { grid-template-columns: repeat(2, 1fr); }
+  .svcHead__title { font-size: 2.4rem; }
+}
+
+@media (max-width: 560px) {
+  .svcGrid { grid-template-columns: 1fr; }
+  .svcHead__title { font-size: 2rem; }
+}

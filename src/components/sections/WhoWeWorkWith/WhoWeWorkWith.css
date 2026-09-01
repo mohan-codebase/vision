@@ -1,0 +1,200 @@
+/* ==========================================================================
+   Section 5 — Who We Work With
+   Avantage triangular tile grid: cover image, navy angled corner, a title
+   that lifts on hover. First tile spans two columns on wide screens.
+   ========================================================================== */
+
+.whoWork {
+  position: relative;
+  background-color: var(--c-white);
+  padding-top: 2em;
+  padding-bottom: var(--space-large);
+  overflow: hidden;
+}
+
+.whoWork::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 55vw;
+  max-height: 640px;
+  background: url('../../../assets/images/bgn-cases.png') top center / 100% auto no-repeat;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.whoWork__cell {
+  position: relative;
+  z-index: 1;
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.whoWork__head {
+  max-width: 640px;
+  margin-bottom: 3em;
+}
+
+.whoWork__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-muted);
+  margin-bottom: 0.9em;
+}
+
+.whoWork__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.whoWork__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.whoWork__plain {
+  font-weight: var(--fw-light);
+  color: var(--c-secondary);
+}
+
+.whoWork__accent {
+  font-weight: var(--fw-bold);
+  color: var(--c-accent);
+}
+
+.whoWork__intro {
+  margin-top: 1.2em;
+  font-family: var(--font-alt);
+  font-size: 1.0625rem;
+  line-height: 1.6;
+  color: var(--c-body);
+}
+
+/* --- Tiles --------------------------------------------------------- */
+
+.whoWork__grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 16px;
+  list-style: none;
+}
+
+.workTile {
+  position: relative;
+  grid-column: span 2;
+  overflow: hidden;
+  background-color: var(--c-secondary);
+  aspect-ratio: 3 / 2;
+}
+
+.workTile:nth-child(1),
+.workTile:nth-child(2),
+.workTile:nth-child(3) {
+  grid-column: span 2;
+}
+
+/* Row 2: two tiles span three columns each */
+.workTile:nth-child(4),
+.workTile:nth-child(5) {
+  grid-column: span 3;
+  aspect-ratio: 12 / 5;
+}
+
+.workTile__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 500ms ease;
+}
+
+.workTile:hover .workTile__img {
+  transform: scale(1.05);
+}
+
+.workTile::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(24, 24, 24, 0.78) 0%, rgba(24, 24, 24, 0.05) 55%);
+  transition: opacity var(--t-base);
+}
+
+.workTile__corner {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 92px 34px 0;
+  border-color: transparent var(--c-accent) transparent transparent;
+  z-index: 2;
+  opacity: 0;
+  transform: translateY(-6px);
+  transition: opacity var(--t-base), transform var(--t-base);
+}
+
+.workTile:hover .workTile__corner {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.workTile__label {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  padding: 1.4em 1.4em 1.3em;
+  font-family: var(--font-heading);
+  font-weight: var(--fw-bold);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: var(--c-white);
+  transition: transform var(--t-base);
+}
+
+.workTile:hover .workTile__label {
+  transform: translateY(-4px);
+}
+
+/* --- Responsive ------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .whoWork__title { font-size: 2.4rem; }
+}
+
+@media (max-width: 860px) {
+  .whoWork__grid { grid-template-columns: repeat(2, 1fr); }
+  .workTile,
+  .workTile:nth-child(n) {
+    grid-column: span 1;
+    aspect-ratio: 3 / 2;
+  }
+  .workTile:nth-child(5) {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 560px) {
+  .whoWork { padding-bottom: var(--space-large-sm); }
+  .whoWork__title { font-size: 2rem; }
+  .whoWork__grid { grid-template-columns: 1fr; }
+  .workTile:nth-child(5) { grid-column: auto; }
+  .workTile__label { font-size: 1.125rem; }
+}

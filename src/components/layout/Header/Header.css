@@ -590,9 +590,9 @@
   }
 }
 
-/* Below 992px the top bar drops its office line, then collapses entirely */
+/* Below 992px the top bar drops the tagline, keeping the phone line */
 @media (max-width: 992px) {
-  .topBar .btTopToolsRight .btIconWidget.btWidgetWithText:first-child {
+  .topBar .btTopToolsLeft {
     display: none;
   }
 }

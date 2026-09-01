@@ -1,0 +1,295 @@
+/* ==========================================================================
+   Section 11 — Request a Callback form
+   Two columns: intro copy on a dark navy panel, the form card overlapping to
+   the right. Frontend-only; visually consistent with the Avantage system.
+   ========================================================================== */
+
+.callbackForm {
+  position: relative;
+  background-color: var(--c-dark-alt);
+  padding: var(--space-medium) 0;
+  overflow: hidden;
+}
+
+.callbackForm::before {
+  content: '';
+  position: absolute;
+  left: -80px;
+  top: -80px;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 260px 260px 0 0;
+  border-color: rgba(255, 255, 255, 0.03) transparent transparent transparent;
+  pointer-events: none;
+}
+
+.callbackForm__cell {
+  position: relative;
+  z-index: 1;
+  width: var(--w-boxed-1200);
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.callbackForm__grid {
+  display: flex;
+  align-items: stretch;
+  gap: 40px;
+}
+
+/* --- Intro ------------------------------------------------------- */
+
+.cbfIntro {
+  flex: 1 1 45%;
+  max-width: 480px;
+  align-self: center;
+  color: var(--c-on-dark);
+}
+
+.cbfIntro__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: 0.9em;
+}
+
+.cbfIntro__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 2.75rem;
+  line-height: 1.14;
+  letter-spacing: -0.01em;
+}
+
+.cbfIntro__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.cbfIntro__plain { font-weight: var(--fw-light); color: var(--c-white); }
+.cbfIntro__accent { font-weight: var(--fw-bold); color: var(--c-accent); }
+
+.cbfIntro__text {
+  margin-top: 1.2em;
+  font-family: var(--font-alt);
+  font-size: 1rem;
+  line-height: 1.65;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cbfIntro__points {
+  margin: 1.6em 0 0;
+  list-style: none;
+}
+
+.cbfIntro__points li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.7em;
+  padding: 0.4em 0;
+  font-family: var(--font-base);
+  font-size: 0.9375rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.cbfIntro__check {
+  flex: none;
+  display: inline-flex;
+  color: var(--c-accent);
+  margin-top: 0.15em;
+}
+
+.cbfIntro__check .btIcon {
+  width: 15px;
+  height: 15px;
+}
+
+.cbfIntro__contact {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6em 1.8em;
+  margin-top: 1.8em;
+  padding-top: 1.6em;
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.cbfIntro__contactLink {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.9375rem;
+  color: var(--c-white);
+  transition: color var(--t-base);
+}
+
+.cbfIntro__contactLink:hover {
+  color: var(--c-accent);
+}
+
+/* --- Form card ------------------------------------------------- */
+
+.cbfCard {
+  flex: 1 1 55%;
+  background: var(--c-white);
+  padding: 2.75em 2.5em;
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+}
+
+.cbfForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.25em;
+}
+
+.cbfField {
+  display: flex;
+  flex-direction: column;
+}
+
+.cbfField--full {
+  grid-column: 1 / -1;
+}
+
+.cbfField label {
+  font-family: var(--font-base);
+  font-size: 0.8125rem;
+  font-weight: var(--fw-bold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--c-secondary);
+  margin-bottom: 0.5em;
+}
+
+.cbfField__req {
+  color: var(--c-accent);
+}
+
+.cbfField input,
+.cbfField textarea {
+  font-family: var(--font-base);
+  font-size: 1rem;
+  color: var(--c-dark);
+  background: #f5f5f5;
+  border: 1px solid transparent;
+  border-bottom: 2px solid var(--c-border-soft);
+  padding: 0.85em 1em;
+  transition: border-color var(--t-base), background-color var(--t-base);
+}
+
+.cbfField input:focus,
+.cbfField textarea:focus {
+  outline: none;
+  background: var(--c-white);
+  border-color: var(--c-border-soft);
+  border-bottom-color: var(--c-accent);
+}
+
+.cbfField textarea {
+  resize: vertical;
+  min-height: 110px;
+}
+
+.cbfSubmit {
+  grid-column: 1 / -1;
+  justify-self: start;
+  padding: 1.1em 3em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  line-height: 1;
+  color: var(--c-white);
+  background-color: var(--c-accent);
+  transition: background-color var(--t-base), box-shadow var(--t-base);
+}
+
+.cbfSubmit:hover {
+  background-color: var(--c-accent-dark);
+  box-shadow: 0 8px 22px rgba(233, 77, 101, 0.35);
+}
+
+.cbfForm__note {
+  grid-column: 1 / -1;
+  margin: 0;
+  font-family: var(--font-alt);
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--c-muted);
+}
+
+/* --- Success state ------------------------------------------- */
+
+.cbfSuccess {
+  text-align: center;
+  padding: 1.5em 0.5em;
+}
+
+.cbfSuccess__icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: rgba(233, 77, 101, 0.12);
+  color: var(--c-accent);
+  margin-bottom: 1em;
+}
+
+.cbfSuccess__icon .btIcon {
+  width: 28px;
+  height: 28px;
+}
+
+.cbfSuccess__title {
+  font-family: var(--font-heading);
+  font-size: 1.6rem;
+  font-weight: var(--fw-bold);
+  color: var(--c-secondary);
+}
+
+.cbfSuccess__text {
+  margin: 0.7em auto 1.4em;
+  max-width: 34em;
+  font-family: var(--font-alt);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--c-body);
+}
+
+.cbfSuccess__again {
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 0.875rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--c-accent);
+}
+
+.cbfSuccess__again:hover {
+  color: var(--c-secondary);
+}
+
+/* --- Responsive --------------------------------------------- */
+
+@media (max-width: 960px) {
+  .callbackForm__grid { flex-direction: column; gap: 2.5em; }
+  .cbfIntro { max-width: none; }
+  .cbfIntro__title { font-size: 2.25rem; }
+}
+
+@media (max-width: 560px) {
+  .cbfCard { padding: 2em 1.5em; }
+  .cbfForm { grid-template-columns: 1fr; }
+  .cbfIntro__title { font-size: 1.9rem; }
+  .cbfSubmit { justify-self: stretch; text-align: center; }
+}

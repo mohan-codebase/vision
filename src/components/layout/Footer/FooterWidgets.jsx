@@ -1,17 +1,15 @@
-import { footerWidgets } from '../../../data/site.js'
+import { footer } from '../../../data/site.js'
 import Icon from '../../ui/Icon.jsx'
 
-import footerMap from '../../../assets/images/img-footer-map.png'
-
 /**
- * FooterWidgets — the `btSiteFooterWidgets` area (`#191919`), three
- * `.btBox` columns at 33.33% each: Headquarters (contact icon-links),
- * Our Locations (`img-footer-map.png` + office list), and Avantage Social
- * links (icon buttons). Each column opens with an uppercase accent eyebrow
- * and a light-weight white title.
+ * FooterWidgets — dark (`#191919`) widget band.
+ *
+ * Column 1: brand, tagline and a short description with contact details.
+ * Columns 2–4: quick links (Business Setup / Our Services / Company).
+ * All contact values come from `src/config/contact.js`.
  */
 export default function FooterWidgets() {
-  const { headquarters, locations, social } = footerWidgets
+  const { about, columns, contact } = footer
 
   return (
     <div className="siteFooterWidgets">
@@ -20,65 +18,60 @@ export default function FooterWidgets() {
 
       <div className="siteFooterWidgets__port">
         <div className="siteFooterWidgets__row">
-          {/* Headquarters */}
-          <section className="ftBox">
-            <span className="ftWidget__super">{headquarters.super}</span>
-            <h4 className="ftWidget__title">{headquarters.title}</h4>
-            <p className="ftWidget__text">{headquarters.text}</p>
+          <section className="ftBox ftBox--about">
+            <span className="ftWidget__super">{about.tagline}</span>
+            <h4 className="ftWidget__title">{about.title}</h4>
+            <p className="ftWidget__text">{about.text}</p>
+
             <ul className="ftContact">
-              {headquarters.links.map((link) => (
-                <li key={link.label}>
-                  <a href={link.href}>
-                    <span className="ftContact__icon">
-                      <Icon name={link.icon} />
-                    </span>
-                    {link.label}
+              <li>
+                <a href={contact.phoneHref}>
+                  <span className="ftContact__icon"><Icon name="phone" /></span>
+                  {contact.phoneDisplay}
+                </a>
+              </li>
+              {contact.email && (
+                <li>
+                  <a href={`mailto:${contact.email}`}>
+                    <span className="ftContact__icon"><Icon name="mail" /></span>
+                    {contact.email}
                   </a>
                 </li>
-              ))}
+              )}
+              <li>
+                <span className="ftContact__plain">
+                  <span className="ftContact__icon"><Icon name="pin" /></span>
+                  {contact.addressLines.join(', ')}
+                </span>
+              </li>
             </ul>
-          </section>
 
-          {/* Our Locations */}
-          <section className="ftBox">
-            <span className="ftWidget__super">{locations.super}</span>
-            <h4 className="ftWidget__title">{locations.title}</h4>
-            <img
-              className="ftMap"
-              src={footerMap}
-              alt="Avantage office locations"
-              width="280"
-              height="142"
-              loading="lazy"
-            />
-            <ul className="ftOffices">
-              {locations.offices.map((office) => (
-                <li className="ftOffice" key={office.city}>
-                  <span className="ftOffice__city">{office.city}</span>
-                  <span className="ftOffice__phone">{office.phone}</span>
-                </li>
-              ))}
-            </ul>
-          </section>
-
-          {/* Avantage Social links */}
-          <section className="ftBox">
-            <span className="ftWidget__super">{social.super}</span>
-            <h4 className="ftWidget__title">{social.title}</h4>
-            <p className="ftWidget__text">{social.text}</p>
             <div className="ftSocial">
-              {social.links.map((link) => (
+              {contact.social.map((link) => (
                 <a
-                  className={`ftSocial__link ftSocial__link--${link.icon}`}
+                  className="ftSocial__link"
                   href={link.href}
                   key={link.icon}
-                  aria-label={link.icon}
+                  aria-label={link.label}
                 >
                   <Icon name={link.icon} />
                 </a>
               ))}
             </div>
           </section>
+
+          {columns.map((col) => (
+            <nav className="ftBox ftBox--links" key={col.title} aria-label={col.title}>
+              <span className="ftWidget__super">{col.title}</span>
+              <ul className="ftLinks">
+                {col.links.map((link) => (
+                  <li key={link.label}>
+                    <a href={link.href}>{link.label}</a>
+                  </li>
+                ))}
+              </ul>
+            </nav>
+          ))}
         </div>
       </div>
     </div>

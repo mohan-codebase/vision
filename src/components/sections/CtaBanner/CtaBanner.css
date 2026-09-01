@@ -1,0 +1,142 @@
+/* ==========================================================================
+   Section 10 — Strong CTA banner
+   Avantage 1400-wide centred teal box; faint grey triangles behind it.
+   ========================================================================== */
+
+.ctaBanner {
+  position: relative;
+  background-color: var(--c-white);
+  padding: var(--space-medium) 0 var(--space-large);
+  overflow: hidden;
+}
+
+.ctaBanner__decor {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 360px;
+  background: url('../../../assets/images/bgn-searching.png') bottom center / 100% auto no-repeat;
+  opacity: 0.55;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ctaBanner__cell {
+  position: relative;
+  z-index: 1;
+  width: 1400px;
+  max-width: calc(100% - (var(--page-gutter) * 2));
+  margin: 0 auto;
+}
+
+.ctaBanner__box {
+  background-color: #215877;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding: 3.75em 0;
+}
+
+.ctaBanner__inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  gap: 48px;
+}
+
+.ctaHeadline {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.ctaHeadline__super {
+  display: block;
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  font-weight: var(--fw-normal);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--c-dark);
+  margin-bottom: 0.85em;
+}
+
+.ctaHeadline__title {
+  position: relative;
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: var(--fw-light);
+  line-height: 1.16;
+  letter-spacing: -0.01em;
+  color: var(--c-white);
+}
+
+.ctaHeadline__title::before {
+  content: '';
+  display: block;
+  width: 2em;
+  border-top: 2px solid var(--c-accent);
+  margin: 0 0 0.35em;
+}
+
+.ctaHeadline__text {
+  margin-top: 1em;
+  font-family: var(--font-alt);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.85);
+  max-width: 40em;
+}
+
+.ctaButton {
+  flex: 0 0 auto;
+  align-self: center;
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6em;
+  padding: 1.15em 3em;
+  font-family: var(--font-base);
+  font-weight: var(--fw-bold);
+  font-size: 1rem;
+  line-height: 1;
+  white-space: nowrap;
+  color: var(--c-white);
+  background-color: var(--c-accent);
+  transition: background-color var(--t-base), color var(--t-base), box-shadow var(--t-base);
+}
+
+.ctaButton:hover {
+  background-color: var(--c-white);
+  color: var(--c-accent);
+  box-shadow: inset 0 0 0 2px var(--c-accent);
+}
+
+/* --- Responsive ------------------------------------------------- */
+
+@media (max-width: 1024px) {
+  .ctaHeadline__title { font-size: 2rem; }
+}
+
+@media (max-width: 860px) {
+  .ctaBanner__box { padding: 3em 0; }
+  .ctaBanner__inner {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1.75em;
+  }
+  .ctaHeadline__title::before { margin-left: auto; margin-right: auto; }
+  .ctaHeadline__text { margin-left: auto; margin-right: auto; }
+  .ctaButton { margin-left: 0; }
+}
+
+@media (max-width: 560px) {
+  .ctaBanner__box { padding: 2.5em 0; }
+  .ctaHeadline__title { font-size: 1.7rem; }
+  .ctaButton { padding: 1em 2.4em; }
+  .ctaBanner__decor { height: 200px; }
+}

@@ -4,10 +4,10 @@ import MenuItem from './MenuItem.jsx'
 import logo from '../../../assets/logo.svg'
 
 /**
- * MainNav — the white logo area (`.btLogoArea`), 140px tall.
+ * MainNav — the white logo area (`.btLogoArea`).
  *
- * Layout is the theme's `btMenuRight`: logo floats left, and the nav plus
- * the tools cluster (search / cart / phone button) float right.
+ * Layout is the theme's `btMenuRight`: the logo floats left, the nav plus the
+ * phone-number button float right.
  */
 export default function MainNav({ onOpenMobile, mobile }) {
   return (
@@ -25,35 +25,22 @@ export default function MainNav({ onOpenMobile, mobile }) {
         )}
 
         <div className="logo">
-          <a href="#top" aria-label="Avantage — home">
-            <img className="btMainLogo" src={logo} alt="Avantage Business Consulting" />
+          <a href="#top" aria-label="Vision Business Setup — home">
+            <img className="btMainLogo" src={logo} alt="Vision Business Setup" />
           </a>
         </div>
 
         <div className="menuPort">
           <div className="topBarInMenu">
             <div className="topBarInMenuCell">
-              <div className="btTopBox btSearch">
-                <button type="button" aria-label="Search">
-                  <Icon name="search" />
-                </button>
-              </div>
-
-              <div className="btTopBox btCartWidget">
-                <button type="button" aria-label="View your shopping cart">
-                  <Icon name="cart" />
-                  <span className="cart-contents">0</span>
-                </button>
-              </div>
-
               <div className="btBox widget_bt_button_widget">
                 <a
                   href={headerPhone.href}
                   className="bt_button_widget bt_button_widget_accent"
-                  title={headerPhone.label}
+                  title={`Call ${headerPhone.label}`}
                 >
-                  <span className="bt_bb_button_text">{headerPhone.label}</span>
                   <Icon name="phone" size="small" />
+                  <span className="bt_bb_button_text">{headerPhone.label}</span>
                 </a>
               </div>
             </div>

@@ -1,132 +1,75 @@
-# Avantage Business — Homepage Clone
+# Vision Business Setup — Homepage
 
-Reference: <https://avantage.bold-themes.com/business/>
-Original stack: WordPress + Avantage theme v2.6.1 + Bold Page Builder v5.9.5.
-Target stack: React 19 + Vite 8, plain CSS (no framework).
+**Design reference:** Avantage Business (<https://avantage.bold-themes.com/business/>) —
+used only for the visual language (typography, geometric shapes, angled
+sections, image masks, hover states).
+**Content source of truth:** `Website Content_Vision.docx`.
+
+Stack: React 19 + Vite 8, plain CSS (no framework). One folder per component,
+co-located `.css`. Content lives in `src/data/`, never inline in JSX.
 
 ## Design tokens
 
-Extracted from `themes/avantage/style.css` and `bold-page-builder/content_elements.crush.css`.
-All live in `src/styles/variables.css`.
+`src/styles/variables.css` — extracted from the Avantage theme and kept.
 
-| Token | Value | Notes |
-|---|---|---|
-| Accent | `#e94d65` | primary; 223 uses in the theme CSS |
-| Secondary | `#1b4962` | default headline navy |
-| Dark | `#181818` / `#191919` | base text / dark section background |
-| Body text | `rgba(24,24,24,.8)` | |
-| Body font | Sarabun | also buttons |
-| Heading font | Roboto Condensed | headline titles |
-| Alt font | Roboto | eyebrows and sub-headlines |
-| Root size | `16px` | every other size is `em`, so it all cascades from here |
-| Heading scale | 3 / 2.5 / 2.10225 / 1.76775 / 1.4865 em | h1–h5 |
-| Boxed widths | 1200px, 1400px | `max-width: calc(100% - 60px)` |
-| Spacing scale | 2em / 5em / 8.75em | normal / medium / large; drops to 2 / 3 / 4.375em ≤768px |
+| Token | Value |
+|---|---|
+| Accent | `#e94d65` |
+| Secondary (navy) | `#1b4962` |
+| Dark section | `#191919` |
+| Teal band | `#215876` |
+| Body font | Sarabun · Headings | Roboto Condensed · Eyebrows/sub | Roboto |
+| Boxed widths | 1200 / 1400px, `max-width: calc(100% - 60px)` |
+| Spacing scale | 2em / 5em / 8.75em (normal / medium / large) |
 
-Breakpoints: `480 · 580 · 620 · 640 · 768 · 992 · 1024 · 1200`.
-Builder tiers: xs ≤480, ms ≤620, sm ≤768, md 993–1200, lg ≥1201.
+## Homepage section order
 
-## Layout model
+`src/pages/Home.jsx`
 
-The builder nests every section three levels deep, and the width/spacing rules
-attach at different levels — so `<Section>` reproduces it exactly:
+| # | Component | Source of design | Content |
+|---|---|---|---|
+| 1 | `HeroSlider` | Avantage hero slider | 3 slides — "Every Business starts with Vision" |
+| 2 | `BusinessSetup` | 3 overlapping cards | UAE Mainland / Free Zone / Offshore |
+| 3 | `OurStory` | 2-col "experience" | Why Vision / Our Story (est. 2015) + 3 medallions |
+| 4 | `WhatSetsUsApart` | borderless service grid | 4 differentiators |
+| 5 | `WhoWeWorkWith` | triangular portfolio tiles | 5 documented industries |
+| 6 | `OurServices` | icon card grid | Licence / Visa / Finance & Banking / Other |
+| 7 | `Commitment` | left-boxed content + photo | Our Approach / Commitment |
+| 8 | `Founder` | new — navy monogram card | Viekram Sadwani |
+| 9 | `CoreValues` | dark teal band + edge coverage | 7 core values |
+| 10 | `CtaBanner` | 1400-wide teal box | strong CTA |
+| 11 | `CallbackForm` | new — navy panel + form card | Request a Callback (frontend-only) |
 
-```
-section.btSection            ← color scheme
-  └ div.btPort               ← vertical padding
-      └ div.btCell           ← max-width + centering
-          └ div.btRow / div.btColumn
-```
+Chrome: `Header` (sticky, phone button, Business Setup + Our Services
+dropdowns, Contact Us, mobile panel), `Footer` (brand + quick links + contact),
+`WhatsApp` (floating "Chat Now", fixed).
 
-## Section order
+## Contact details
 
-| # | Component | Layout | Spacing | Notes |
-|---|---|---|---|---|
-| 1 | `HeroSlider` | wide | — | dark; 3 fading slides, 2 buttons each |
-| 2 | `ServicesIntro` | 1200 | pb large | 3 columns w/ background images |
-| 3 | `Industries` | 1200 | pb medium | 6 service cards + "View all" |
-| 4 | `Experience` | 1200 | pb normal | 2-col, right boxed bg, 3 features |
-| 5 | `Testimonials` | 1200 | pt/pb large | dark; top+bottom coverage images |
-| 6 | `ClientLogos` | 1200 | pt normal, pb medium | 9-logo carousel |
-| 7 | `CallbackCounters` | 1200 | pt medium | left boxed bg; 3 animated counters |
-| 8 | `Cases` | 1200 | pt normal, pb large | filter tabs + masonry tiles |
-| 9 | `QuoteBanner` | **1400** | pb large | the one 1400-wide section |
-| 10 | `LatestNews` | 1200 | pb large | 4 post cards |
-| 11 | `MapEmbed` | wide | — | Google map, custom pin |
-| 12 | `ContactBar` | 1200 | — | see note below |
+**All contact values are placeholders** in `src/config/contact.js` — the source
+document contains none. Replace `phoneDisplay` / `phoneHref` / `whatsappNumber`
+(and optionally `email`) before launch. `whatsappNumber` is digits only in
+international format.
 
-**Note on 12/13:** the original ships two copies of the contact strip — one
-`hidden_xs/ms/sm`, one `hidden_md/lg` — because the builder can't reflow it.
-We render one responsive `ContactBar` instead. Same pixels, half the markup.
+## Navigation
 
-Sections 14 and 15 in the source DOM are the footer widget area and footer bar;
-they are `Footer` here, not page sections.
+`src/data/site.js` → `mainMenu`. Three-level tree:
 
-## Project layout
+- **Business Setup** → UAE Mainland · UAE Free Zone · UAE Offshore
+- **Our Services** → Licence · Visa · Finance & Banking · Other (each with a
+  third-level flyout of sub-services)
+- **Contact Us**
 
-```
-src/
-  main.jsx                  entry
-  App.jsx                   Header + Home + Footer shell
-  pages/Home.jsx            the 12 sections, in order
-  styles/
-    global.css              fonts + imports + page shell
-    variables.css           design tokens
-    reset.css               mirrors the theme's normalize
-    typography.css          base type + responsive heading scale
-  components/
-    ui/                     Section, Headline, Button, Grid/Column, Icon,
-                            IconWidget, ServiceCard, Counter, Carousel
-    layout/
-      Header/               Header, TopBar, MainNav, MobileMenu
-      Footer/               Footer, FooterWidgets, FooterBottom
-    sections/<Name>/        one folder per section: .jsx + .css
-  data/
-    site.js                 top bar, 6-item mega menu, footer
-    home.js                 per-section content
-  hooks/
-    useInView.js            counter + reveal triggers
-    useStickyHeader.js      sticky header toggle
-  assets/images/            see README there
-```
+All links are on-page anchors (`#business-setup`, `#services`,
+`#request-callback`, …). Dedicated inner pages are not built yet.
 
-## Conventions
+## Kept UI primitives
 
-- One folder per component, co-located `.css`, imported by the component.
-- Class names keep the theme's `bt`-prefix so the reference CSS stays greppable
-  against ours during pixel comparison.
-- Content lives in `src/data/`, never inline in JSX — section components are
-  pure layout, which is what the pixel work actually touches.
-- No jQuery/Slick. `Carousel` reimplements only the three behaviours the
-  homepage needs.
+`src/components/ui/` — `Icon` (SVG sprite `public/icons.svg`), `IconWidget`
+(top bar). `Section` / `Headline` / `Button` / `Counter` remain as generic
+primitives for the future inner pages but are unused on the homepage.
 
-## Status
+## Reveal / animation hooks
 
-**Header: built and verified.** Everything below it is still a stub with its
-layout contract in a docblock, marked `TODO(structure-only)`.
-
-Implemented: tokens, reset, typography, `Section`, `Headline`, `Button`,
-`Icon`, `IconWidget`, the full `Header` (TopBar / MainNav / MenuItem /
-MobileMenu), `useStickyHeader`, `useMediaQuery`, and the icon sprite.
-
-### Header — measured against the live site at 1440px
-
-Geometry was verified by probing both pages over the Chrome DevTools Protocol
-and diffing `getBoundingClientRect` / computed styles, not by eyeballing.
-
-| Metric | Reference | Clone |
-|---|---|---|
-| Header box | 1440x176 | exact |
-| Top bar | 1440x36, `rgb(27,73,98)` | exact |
-| Phone button | [1167, 83, 153, 47] | exact |
-| Menu link line-height / weight | 140px / 700 | exact |
-| Gaps between menu items | 50px x5 | exact |
-| Menu item x-positions | 511 / 603 / 717 / 828 / 1002 | within 1-2px |
-
-Behaviour verified: hover dropdowns (opacity 0->1, translateY -20px->0), the
-third-level flyout at `left: 270px`, sticky collapse (176->70px, logo and
-line-height 140->70, top bar hidden), and the mobile panel with its accordion.
-
-Known cosmetic deltas, both from substituting SVGs for the theme's icon fonts:
-top-bar widget widths differ by ~6px (16px SVG vs variable-width glyph), and
-the logo is a placeholder wordmark at the reference's 268x140 box.
+`src/hooks/` — `useStickyHeader`, `useMediaQuery`, `useInView` (drives the
+Our Story medallion rings).
